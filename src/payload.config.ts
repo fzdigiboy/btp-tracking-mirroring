@@ -8,12 +8,14 @@ import sharp from 'sharp'
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages/Pages'
-import { Categories } from './collections/Categories'
-import { Posts } from './collections/Posts'
-import { Testimonials } from './collections/Testimonials'
-import { Comments } from './collections/Comments'
-import { ContactSubmissions } from './collections/ContactSubmissions'
+
 import { plugins } from './plugins'
+import { Settings } from './globals/Settings'
+import { Services } from './collections/Services'
+import { ProjectTypes } from './collections/Project_Type'
+import { Testimonies } from './collections/Testimonies'
+import { Contacts } from './collections/Contacts'
+import { Projects } from './collections/Projects'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -28,8 +30,8 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Pages, Categories, Posts, Testimonials, Comments, ContactSubmissions],
-  globals: [],
+  collections: [Users, Media, Pages, Services, ProjectTypes, Testimonies, Contacts, Projects],
+  globals: [Settings],
   secret: process.env.PAYLOAD_SECRET!,
 
   typescript: {

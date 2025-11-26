@@ -70,11 +70,11 @@ export interface Config {
     users: User;
     media: Media;
     pages: Page;
-    categories: Category;
-    posts: Post;
-    testimonials: Testimonial;
-    comments: Comment;
-    'contact-submissions': ContactSubmission;
+    services: Service;
+    'project-types': ProjectType;
+    testimonies: Testimony;
+    contacts: Contact;
+    projects: Project;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -84,11 +84,11 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
-    categories: CategoriesSelect<false> | CategoriesSelect<true>;
-    posts: PostsSelect<false> | PostsSelect<true>;
-    testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
-    comments: CommentsSelect<false> | CommentsSelect<true>;
-    'contact-submissions': ContactSubmissionsSelect<false> | ContactSubmissionsSelect<true>;
+    services: ServicesSelect<false> | ServicesSelect<true>;
+    'project-types': ProjectTypesSelect<false> | ProjectTypesSelect<true>;
+    testimonies: TestimoniesSelect<false> | TestimoniesSelect<true>;
+    contacts: ContactsSelect<false> | ContactsSelect<true>;
+    projects: ProjectsSelect<false> | ProjectsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -96,8 +96,12 @@ export interface Config {
   db: {
     defaultIDType: number;
   };
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    settings: Setting;
+  };
+  globalsSelect: {
+    settings: SettingsSelect<false> | SettingsSelect<true>;
+  };
   locale: null;
   user: User & {
     collection: 'users';
@@ -213,51 +217,79 @@ export interface Page {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "categories".
+ * via the `definition` "services".
  */
-export interface Category {
+export interface Service {
   id: number;
-  name: string;
+  titre: string;
+  logo: 'logo1' | 'logo2' | 'logo3';
+  description: string;
+  image: number | Media;
+  button: {
+    title: string;
+    href: string;
+  };
   /**
-   * URL-friendly version of the name
+   * Cochez pour afficher l'image à droite
    */
-  slug: string;
-  description?: string | null;
-  /**
-   * Hex color code for category badge (e.g., #1152d4)
-   */
-  color?: string | null;
-  /**
-   * Icon name from Material Symbols (e.g., "corporate_fare")
-   */
-  icon?: string | null;
-  /**
-   * Paste raw SVG code here
-   */
-  iconSvg?: string | null;
+  imageRight?: boolean | null;
+  content?:
+    | {
+        title: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "posts".
+ * via the `definition` "project-types".
  */
-export interface Post {
+export interface ProjectType {
+  id: number;
+  titre: string;
+  description: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonies".
+ */
+export interface Testimony {
+  id: number;
+  name: string;
+  content: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contacts".
+ */
+export interface Contact {
+  id: number;
+  firstname: string;
+  lastname: string;
+  email: string;
+  phone: string;
+  service: number | Service;
+  message: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "projects".
+ */
+export interface Project {
   id: number;
   title: string;
-  slug: string;
-  author: number | User;
-  publishedDate: string;
-  category: number | Category;
-  tags?:
-    | {
-        tag?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  readTime?: number | null;
-  heroImage: number | Media;
-  content?: {
+  image: (number | Media)[];
+  location: string;
+  content: {
     root: {
       type: string;
       children: {
@@ -271,52 +303,17 @@ export interface Post {
       version: number;
     };
     [k: string]: unknown;
-  } | null;
-  relatedPosts?: (number | Post)[] | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "testimonials".
- */
-export interface Testimonial {
-  id: number;
-  quote: string;
-  authorName: string;
-  authorRole: string;
-  company?: string | null;
-  authorImage?: (number | null) | Media;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "comments".
- */
-export interface Comment {
-  id: number;
-  post: number | Post;
-  author?: (number | null) | User;
-  name?: string | null;
-  email?: string | null;
-  content: string;
-  status?: ('pending' | 'approved' | 'spam') | null;
-  publishedDate?: string | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "contact-submissions".
- */
-export interface ContactSubmission {
-  id: number;
-  name: string;
-  email: string;
-  subject?: string | null;
-  message: string;
-  status?: ('new' | 'read' | 'replied') | null;
+  };
+  projectInfo: {
+    duration: string;
+    size: {
+      value: number;
+      unit: 'm2' | 'hectare';
+    };
+    services: (number | Service)[];
+  };
+  projectType: number | ProjectType;
+  testimonies?: (number | Testimony)[] | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -340,24 +337,24 @@ export interface PayloadLockedDocument {
         value: number | Page;
       } | null)
     | ({
-        relationTo: 'categories';
-        value: number | Category;
+        relationTo: 'services';
+        value: number | Service;
       } | null)
     | ({
-        relationTo: 'posts';
-        value: number | Post;
+        relationTo: 'project-types';
+        value: number | ProjectType;
       } | null)
     | ({
-        relationTo: 'testimonials';
-        value: number | Testimonial;
+        relationTo: 'testimonies';
+        value: number | Testimony;
       } | null)
     | ({
-        relationTo: 'comments';
-        value: number | Comment;
+        relationTo: 'contacts';
+        value: number | Contact;
       } | null)
     | ({
-        relationTo: 'contact-submissions';
-        value: number | ContactSubmission;
+        relationTo: 'projects';
+        value: number | Project;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -468,79 +465,87 @@ export interface PagesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "categories_select".
+ * via the `definition` "services_select".
  */
-export interface CategoriesSelect<T extends boolean = true> {
-  name?: T;
-  slug?: T;
+export interface ServicesSelect<T extends boolean = true> {
+  titre?: T;
+  logo?: T;
   description?: T;
-  color?: T;
-  icon?: T;
-  iconSvg?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "posts_select".
- */
-export interface PostsSelect<T extends boolean = true> {
-  title?: T;
-  slug?: T;
-  author?: T;
-  publishedDate?: T;
-  category?: T;
-  tags?:
+  image?: T;
+  button?:
     | T
     | {
-        tag?: T;
+        title?: T;
+        href?: T;
+      };
+  imageRight?: T;
+  content?:
+    | T
+    | {
+        title?: T;
+        description?: T;
         id?: T;
       };
-  readTime?: T;
-  heroImage?: T;
-  content?: T;
-  relatedPosts?: T;
   updatedAt?: T;
   createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "testimonials_select".
+ * via the `definition` "project-types_select".
  */
-export interface TestimonialsSelect<T extends boolean = true> {
-  quote?: T;
-  authorName?: T;
-  authorRole?: T;
-  company?: T;
-  authorImage?: T;
+export interface ProjectTypesSelect<T extends boolean = true> {
+  titre?: T;
+  description?: T;
   updatedAt?: T;
   createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "comments_select".
+ * via the `definition` "testimonies_select".
  */
-export interface CommentsSelect<T extends boolean = true> {
-  post?: T;
-  author?: T;
+export interface TestimoniesSelect<T extends boolean = true> {
   name?: T;
-  email?: T;
   content?: T;
-  status?: T;
-  publishedDate?: T;
   updatedAt?: T;
   createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "contact-submissions_select".
+ * via the `definition` "contacts_select".
  */
-export interface ContactSubmissionsSelect<T extends boolean = true> {
-  name?: T;
+export interface ContactsSelect<T extends boolean = true> {
+  firstname?: T;
+  lastname?: T;
   email?: T;
-  subject?: T;
+  phone?: T;
+  service?: T;
   message?: T;
-  status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "projects_select".
+ */
+export interface ProjectsSelect<T extends boolean = true> {
+  title?: T;
+  image?: T;
+  location?: T;
+  content?: T;
+  projectInfo?:
+    | T
+    | {
+        duration?: T;
+        size?:
+          | T
+          | {
+              value?: T;
+              unit?: T;
+            };
+        services?: T;
+      };
+  projectType?: T;
+  testimonies?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -575,6 +580,72 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "settings".
+ */
+export interface Setting {
+  id: number;
+  enterprise_name: string;
+  logo: number | Media;
+  adresse: string;
+  tel: {
+    numero: string;
+    id?: string | null;
+  }[];
+  email: string;
+  reseau_sociaux?:
+    | {
+        icon:
+          | 'facebook'
+          | 'instagram'
+          | 'twitter'
+          | 'linkedin'
+          | 'youtube'
+          | 'tiktok'
+          | 'snapchat'
+          | 'pinterest'
+          | 'reddit'
+          | 'whatsapp'
+          | 'telegram'
+          | 'discord'
+          | 'twitch'
+          | 'dribbble'
+          | 'behance'
+          | 'github';
+        url: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "settings_select".
+ */
+export interface SettingsSelect<T extends boolean = true> {
+  enterprise_name?: T;
+  logo?: T;
+  adresse?: T;
+  tel?:
+    | T
+    | {
+        numero?: T;
+        id?: T;
+      };
+  email?: T;
+  reseau_sociaux?:
+    | T
+    | {
+        icon?: T;
+        url?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

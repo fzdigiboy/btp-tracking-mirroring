@@ -22,6 +22,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
   image,
 }) => {
   return (
+
     <section className="py-16 md:py-24">
       <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
         <div className="order-2 md:order-1">
