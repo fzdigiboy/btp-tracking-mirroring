@@ -2,6 +2,8 @@
 
 import { Puck } from '@measured/puck'
 import { useField, useForm, useTheme } from '@payloadcms/ui'
+import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import '@measured/puck/puck.css'
 import { config } from '../editor/puck-config'
 import './PuckEditor.scss'
@@ -31,9 +33,18 @@ const PuckEditor = () => {
       setHandle(data.root?.props?.handle)
     }
   }
-  return (
+
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) return null
+
+  return createPortal(
     <div
-      className={`twp h-screen w-full overflow-auto ${theme === 'dark' ? 'dark' : ''}`}
+      className={`twp fixed inset-0 z-[0] h-screen w-full overflow-auto bg-white ${theme === 'dark' ? 'dark bg-gray-900' : ''}`}
       data-theme={theme}
     >
       <Puck
@@ -43,10 +54,11 @@ const PuckEditor = () => {
         onChange={onChange}
         iframe={{ enabled: true }}
         overrides={{
-          headerActions: () => <></>,
+          // headerActions: () => <></>,
         }}
       />
-    </div>
+    </div>,
+    document.body
   )
 }
 

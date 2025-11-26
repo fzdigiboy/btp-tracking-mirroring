@@ -20,7 +20,7 @@ export default async function RootLayout({
   return (
     <html lang="fr">
       <head></head>
-      <body className={`font-sans antialiased `}>
+      <body>
         <AuthProvider>
           <main id="main-content">
             <Suspense fallback={null}>{children}</Suspense>

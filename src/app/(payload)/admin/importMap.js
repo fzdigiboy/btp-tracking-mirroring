@@ -1,6 +1,4 @@
 import { default as default_587fb76ccf6cf2ca212b3fee0a3e420b } from '@/collections/Pages/components/PuckEditor'
-import { PayloadColorPicker as PayloadColorPicker_19832098ba75f2466fea24512f9d72d2 } from '@/components/payload/PayloadColorPicker'
-import { IconField as IconField_cb8b2044f1deb128e89fba55575b5c0e } from '@/components/payload/IconField'
 import { RscEntryLexicalCell as RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
 import { RscEntryLexicalField as RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
 import { LexicalDiffComponent as LexicalDiffComponent_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
@@ -27,8 +25,6 @@ import { ItalicFeatureClient as ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0
 
 export const importMap = {
   "@/collections/Pages/components/PuckEditor#default": default_587fb76ccf6cf2ca212b3fee0a3e420b,
-  "@/components/payload/PayloadColorPicker#PayloadColorPicker": PayloadColorPicker_19832098ba75f2466fea24512f9d72d2,
-  "@/components/payload/IconField#IconField": IconField_cb8b2044f1deb128e89fba55575b5c0e,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalCell": RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalField": RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e,
   "@payloadcms/richtext-lexical/rsc#LexicalDiffComponent": LexicalDiffComponent_44fe37237e0ebf4470c9990d8cb7b07e,
