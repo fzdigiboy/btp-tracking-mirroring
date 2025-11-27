@@ -1,6 +1,11 @@
 import { Config } from '@measured/puck'
+import { ABBlock4 } from './btp_blocks/ab-block-4'
+import { FooterBlocks } from './btp_blocks/footer'
+import { ConstructionBlock } from './btp_blocks/hp-construction'
+import { ServiceBlock4 } from './btp_blocks/service-block-4'
+// import { HeroSectionBlock } from './btp_blocks/hp-hero'
+import { NumberBlock } from './btp_blocks/hp-number'
 import { PuckProps } from './puck-types'
-import { HeroSectionBlock } from './btp_blocks/hp-hero'
 
 // ========================================
 // PORTFOLIO DESIGN BLOCKS (blo_portfolio)
@@ -33,25 +38,25 @@ export const config: Config<PuckProps> = {
     // ===== LAYOUT =====
     layout: {
       title: '🏗️ Layout & Structure',
-      components: [], // Header et Footer (les blocks)
+      components: ['FooterBlocks',], // Header et Footer (les blocks)
     },
 
     // ===== HOMEPAGE =====
     homepage: {
       title: '🏠 Home',
-      components: ['HeroSectionBlock'],
+      components: ['NumberBlock', 'ConstructionBlock',],
     },
 
     // ===== About Us =====
     about_us: {
       title: '📰 About Us',
-      components: [],
+      components: ['ABBlock4'],
     },
 
     // ===== Services =====
     services: {
       title: '📝 Services',
-      components: [],
+      components: ["ServiceBlock4"],
     },
 
     // ===== Projects =====²
@@ -83,7 +88,12 @@ export const config: Config<PuckProps> = {
     // Tous les blocs créés
     // ===== LAYOUT =====
     // ===== HOMEPAGE =====
-    HeroSectionBlock,
+    // HeroSectionBlock,
+    NumberBlock,
+    ConstructionBlock,
+    FooterBlocks,
+    ABBlock4,
+    ServiceBlock4,
     // ===== About Us =====
     // ===== Services =====
     // ===== Projects =====

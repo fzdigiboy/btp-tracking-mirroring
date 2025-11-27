@@ -1,14 +1,15 @@
 import Link from "next/link";
 
-export default function Footer() {
+export default function Footer({ logo, logoText, description, copyrightText, sections }: any) {
     return (
-        <footer className="bg-card border-t border-border">
+        <footer className="bg-card border-t border-border mt-auto!">
             <div className="max-w-6xl mx-auto py-12 px-4">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                     {/* Logo and Description */}
                     <div className="col-span-1 md:col-span-2">
                         <div className="flex items-center gap-3 mb-4">
                             <div className="size-6 text-primary">
+                                {logo ? <img src={logo} alt={logo?.alt} className="w-6 h-6" />:
                                 <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         clipRule="evenodd"
@@ -17,59 +18,39 @@ export default function Footer() {
                                         fillRule="evenodd"
                                     />
                                 </svg>
+                                }
                             </div>
-                            <h2 className="text-xl font-bold tracking-[-0.015em]">TogoBuild</h2>
+                            <h2 className="text-xl font-bold tracking-[-0.015em]">{logoText}</h2>
                         </div>
                         <p className="text-text-muted">
-                            Building dreams in Togo for the global diaspora. Your trusted partner for seamless, remote construction projects.
+                            {description}
                         </p>
                     </div>
-
-                    {/* Quick Links */}
-                    <div>
-                        <h3 className="font-bold text-foreground mb-4">Quick Links</h3>
-                        <ul className="space-y-2">
-                            <li>
-                                <Link className="text-text-muted hover:text-primary transition-colors" href="/Services">
-                                    Services
-                                </Link>
-                            </li>
-                            <li>
-                                <Link className="text-text-muted hover:text-primary transition-colors" href="/Projects">
-                                    Projects
-                                </Link>
-                            </li>
-                            <li>
-                                <Link className="text-text-muted hover:text-primary transition-colors" href="/About">
-                                    About Us
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
-
-                    {/* Contact */}
-                    <div>
-                        <h3 className="font-bold text-foreground mb-4">Contact</h3>
-                        <ul className="space-y-2 text-text-muted">
-                            <li className="flex items-start gap-2">
-                                <span className="text-lg mt-1">📍</span>
-                                <span>123 Rue de la Paix, Lomé, Togo</span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                                <span className="text-lg mt-1">📞</span>
-                                <span>+228 90 00 00 00</span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                                <span className="text-lg mt-1">✉️</span>
-                                <span>contact@togobuild.com</span>
-                            </li>
-                        </ul>
-                    </div>
+                   {
+                       sections.map((section:any, index: number) => (
+                        <div key={index}>
+                            <h3 className="font-bold text-foreground mb-4">{section.title}</h3>
+                            <ul className="space-y-2 text-text-muted">
+                                {section?.links?.map((link: any, linkIndex: number) => {
+                                  return (  <li key={linkIndex}>
+                                        <Link
+                                            href={link?.href ?? "#"}
+                                            className="text-text-muted hover:text-primary transition-colors flex items-start gap-2"
+                                        >
+                                             {link?.icons}                                           {link.label}
+                                        </Link>
+                                    </li>
+                                   )
+                                    }
+                                )}
+                            </ul>
+                        </div>
+                    ))}
+                   
                 </div>
-
                 {/* Copyright */}
                 <div className="mt-8 pt-8 border-t border-border text-center text-sm text-text-muted">
-                    <p>© 2024 TogoBuild. All rights reserved.</p>
+                    <p>{copyrightText}</p>
                 </div>
             </div>
         </footer>

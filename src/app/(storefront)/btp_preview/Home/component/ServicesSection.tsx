@@ -16,6 +16,7 @@ export default function ServicesSection() {
             description: "We manage every phase of construction, ensuring quality and timely delivery of your project."
         }
     ];
+  
 
     return (
         <section className="py-16 sm:py-24">

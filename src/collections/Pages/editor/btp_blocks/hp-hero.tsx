@@ -1,6 +1,6 @@
+import HeroSectionComponent from '@/app/(storefront)/btp_components/Home/component/HeroSection'
 import { ComponentConfig } from '@measured/puck'
 import ImagePickerField from '../components/ImagePickerField'
-import HeroSectionComponent from '@/app/(storefront)/btp_components/Home/component/HeroSection'
 import { colorPickerField } from '../fields/color-picker'
 
 export interface HeroSectionProps {
@@ -22,6 +22,7 @@ export interface HeroSectionProps {
 // The block structure
 export const HeroSectionBlock: ComponentConfig<HeroSectionProps> = {
   label: 'Hero Section',
+  
   fields: {
     title: { type: 'text' },
     description: { type: 'text' },

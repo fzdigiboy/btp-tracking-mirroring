@@ -7,17 +7,75 @@ export type PuckProps = {
   //   level: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   //   align?: 'left' | 'center' | 'right'
   // }
-  HeroSectionBlock: {
+  // HeroSectionBlock: {
+  //   title: string
+  //   description: string
+  //   button: Array<{
+  //     text: string
+  //     href: string
+  //   }>
+  //   image?: {
+  //     url: string
+  //     alt: string
+  //   }
+  //   isFullWidth: string
+  // }
+
+  NumberBlock: {
+    numberBlocks: Array<{
+      title: string
+      description: string
+      color: string
+      textColor: string
+    }>
+    isFullWidth: string
+  }
+
+  ConstructionBlock: {
     title: string
     description: string
-    button: Array<{
-      text: string
-      href: string
+    constructions: Array<{
+      title: string
+      description: string
+      icon: string
     }>
-    image?: {
+    isFullWidth: string
+  }
+
+  FooterBlocks: {
+    logoText: string
+    logo?: {
       url: string
       alt: string
     }
+    description?: string
+    sections: Array<{
+      title: string
+      links: Array<{
+        label: string
+        href: string
+        icons?:string
+      }>
+    }>
+    copyrightText?: string
+  }
+  ABBlock4: {
+    title: string
+    subtitle: string
+    blocks: Array<{
+      title: string
+      description: string
+      icon: string
+    }>
+    isFullWidth: string
+  }
+  ServiceBlock4: {
+    title: string
+    description: string
+    steps: Array<{
+      title: string
+      icon: string
+    }>
     isFullWidth: string
   }
   // TextBlock: {
