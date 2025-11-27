@@ -3,7 +3,6 @@ import { ABBlock4 } from './btp_blocks/ab-block-4'
 import { FooterBlocks } from './btp_blocks/footer'
 import { ConstructionBlock } from './btp_blocks/hp-construction'
 import { ServiceBlock4 } from './btp_blocks/service-block-4'
-// import { HeroSectionBlock } from './btp_blocks/hp-hero'
 import { NumberBlock } from './btp_blocks/hp-number'
 import { PuckProps } from './puck-types'
 
@@ -11,6 +10,11 @@ import { PuckProps } from './puck-types'
 // PORTFOLIO DESIGN BLOCKS (blo_portfolio)
 // ========================================
 import { AuthProvider } from '../../../contexts/auth-context'
+import { RecentProjectSectionBlock } from './btp_blocks/hp-recent-projects'
+import { TestimonialsSectionBlock } from './btp_blocks/hp-testimonials'
+import { StoryMissionSectionBlock } from './btp_blocks/about-story'
+import { TeamSectionBlock } from './btp_blocks/about-team'
+import { HeroSectionBlock } from './btp_blocks/hp-hero'
 
 export const config: Config<PuckProps> = {
   root: {
@@ -44,13 +48,13 @@ export const config: Config<PuckProps> = {
     // ===== HOMEPAGE =====
     homepage: {
       title: '🏠 Home',
-      components: ['NumberBlock', 'ConstructionBlock',],
+      components: ['HeroSectionBlock', 'RecentProjectSectionBlock', 'TestimonialsSectionBlock', 'NumberBlock', 'ConstructionBlock',],
     },
 
     // ===== About Us =====
     about_us: {
       title: '📰 About Us',
-      components: ['ABBlock4'],
+      components: ['StoryMissionSectionBlock', 'TeamSectionBlock', 'ABBlock4'],
     },
 
     // ===== Services =====
@@ -88,7 +92,11 @@ export const config: Config<PuckProps> = {
     // Tous les blocs créés
     // ===== LAYOUT =====
     // ===== HOMEPAGE =====
-    // HeroSectionBlock,
+    HeroSectionBlock,
+    RecentProjectSectionBlock,
+    TestimonialsSectionBlock,
+    StoryMissionSectionBlock,
+    TeamSectionBlock,
     NumberBlock,
     ConstructionBlock,
     FooterBlocks,
