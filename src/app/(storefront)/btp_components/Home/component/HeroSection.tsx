@@ -1,6 +1,12 @@
-export default function HeroSectionComponent({ title, description, button: buttons, image }: any) {
+export default function HeroSectionComponent({
+  title,
+  description,
+  button: buttons,
+  image,
+  isFullWidth,
+}: any) {
   return (
-    <div className="@container">
+    <div className={isFullWidth === 'No' ? 'custom_container' : ''}>
       <div
         className="flex min-h-[60vh] md:min-h-[70vh] flex-col gap-6 bg-cover bg-center bg-no-repeat items-start justify-center text-center px-4 py-10"
         style={{
@@ -17,9 +23,13 @@ export default function HeroSectionComponent({ title, description, button: butto
         </div>
         <div className="flex-wrap gap-4 flex mx-auto mt-6">
           {buttons?.map((button: any, index: number) => {
-            const buttonColor = button?.color;
+            const buttonColor = button?.color
             return (
-              <button key={index} style={{ backgroundColor: buttonColor }} className={`flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-8 text-white text-base font-bold tracking-wide hover:bg-opacity-90 transition-colors`}>
+              <button
+                key={index}
+                style={{ backgroundColor: buttonColor }}
+                className={`flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-8 text-white text-base font-bold tracking-wide hover:bg-opacity-90 transition-colors`}
+              >
                 <span className="truncate">{button?.text}</span>
               </button>
             )

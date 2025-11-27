@@ -1,32 +1,5 @@
 // import { Product } from "@/lib/products";
 
-import { DividerProps } from './components/Divider'
-import { IconBlockProps } from './components/IconBlock'
-import { VideoBlockProps } from './components/VideoBlock'
-import { RichTextProps } from './components/RichText'
-import { GridProps } from './components/Grid'
-import { MapProps } from './components/Map'
-import { CodeBlockProps } from './components/CodeBlock'
-
-// New Components Props
-import { TabsProps } from './components/Tabs'
-import { CarouselProps } from './components/Carousel'
-import { PricingTableProps } from './components/PricingTable'
-import { StatsCounterProps } from './components/StatsCounter'
-import { ImageGalleryProps } from './components/ImageGallery'
-import { ModalProps } from './components/Modal'
-import { DropdownProps } from './components/Dropdown'
-import { FormBuilderProps } from './components/FormBuilder'
-import { VideoPlayerProps } from './components/VideoPlayer'
-import { AudioPlayerProps } from './components/AudioPlayer'
-import { SocialShareProps } from './components/SocialShare'
-import { ReviewsProps } from './components/Reviews'
-import { TimelineProps } from './components/Timeline'
-import { ProductCardProps } from './components/ProductCard'
-import { ProductComparisonProps } from './components/ProductComparison'
-import { SocialFeedProps } from './components/SocialFeed'
-import { CartPreviewProps } from './components/CartPreview'
-
 // Déclarer les blocs avec leur attributs
 export type PuckProps = {
   // HeadingBlock: {
@@ -45,6 +18,7 @@ export type PuckProps = {
       url: string
       alt: string
     }
+    isFullWidth: string
   }
   // TextBlock: {
   //   text: string

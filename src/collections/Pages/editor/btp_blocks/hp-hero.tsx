@@ -15,6 +15,8 @@ export interface HeroSectionProps {
     url: string
     alt: string
   }
+  // TODO: A mettre dans chaque bloc
+  isFullWidth: string
 }
 
 // The block structure
@@ -44,6 +46,13 @@ export const HeroSectionBlock: ComponentConfig<HeroSectionProps> = {
         />
       ),
     },
+    isFullWidth: {
+      type: 'radio',
+      options: [
+        { label: 'Yes', value: 'Yes' },
+        { label: 'No', value: 'No' },
+      ],
+    },
   },
   defaultProps: {
     title: 'Your Trusted Partner for Building in Congo',
@@ -64,11 +73,18 @@ export const HeroSectionBlock: ComponentConfig<HeroSectionProps> = {
       url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCA-WpptGbWx9_thOx8-C6UeQLqyDpcYsaNuUwM7djc4DeGtC-KHhFhZerFJk34lhV8-u8NLBUjh2Fx7HvE0aQpVlgNOXLwgG3yKrAuReKd0ZvXdGwUvjmor_lmX8ShOTfHQJGK0uAh5uvZm7JV-XENLX8kweHnx8GGI3M96IGh4KOWZh2Jo2cBPWSb1oUod3C61bRaaJcagyCwcX7rInYfqO-swwVRhAGv1RqCXAG44kR7TlCp6YXQqpeyIk1vD78lw-sKF_NflCQ_',
       alt: 'TogoBuild',
     },
+    isFullWidth: 'No',
   },
 
-  render: ({ title, description, button, image }) => {
+  render: ({ title, description, button, image, isFullWidth }) => {
     return (
-      <HeroSectionComponent title={title} description={description} button={button} image={image} />
+      <HeroSectionComponent
+        title={title}
+        description={description}
+        button={button}
+        image={image}
+        isFullWidth={isFullWidth}
+      />
     )
   },
 }
