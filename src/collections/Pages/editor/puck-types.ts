@@ -7,19 +7,19 @@ export type PuckProps = {
   //   level: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   //   align?: 'left' | 'center' | 'right'
   // }
-  // HeroSectionBlock: {
-  //   title: string
-  //   description: string
-  //   button: Array<{
-  //     text: string
-  //     href: string
-  //   }>
-  //   image?: {
-  //     url: string
-  //     alt: string
-  //   }
-  //   isFullWidth: string
-  // }
+  HeroSectionBlock: {
+    title: string
+    description: string
+    button: Array<{
+      text: string
+      href: string
+    }>
+    image?: {
+      url: string
+      alt: string
+    }
+    isFullWidth: string
+  }
 
   NumberBlock: {
     numberBlocks: Array<{
@@ -76,6 +76,46 @@ export type PuckProps = {
       title: string
       icon: string
     }>
+    isFullWidth: string
+  }
+  RecentProjectSectionBlock: {
+    title: string
+    description: string
+    isFullWidth: string
+  }
+  TestimonialsSectionBlock: {
+    title: string
+    testimonies: Array<{
+      message: string
+      author: string
+      adress: string
+    }>
+    isFullWidth: string
+  }
+  StoryMissionSectionBlock: {
+    title: string
+    subtitle: string
+    description: string
+    infos: Array<{
+      title: string
+      content: string
+    }>
+    isFullWidth: string
+  }
+  TeamSectionBlock: {
+    title: string
+    subtitle: string
+    description: string
+    team_composition: Array<{
+      name: string
+      role: string
+      description: string
+      image: {
+        url: string
+        alt: string
+      }
+    }>
+    // TODO: A mettre dans chaque bloc
     isFullWidth: string
   }
   // TextBlock: {
