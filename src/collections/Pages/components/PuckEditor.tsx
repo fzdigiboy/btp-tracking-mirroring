@@ -51,6 +51,7 @@ const PuckEditor = () => {
         config={config}
         data={value || initialData}
         onPublish={save}
+        
         onChange={onChange}
         iframe={{ enabled: true }}
         overrides={{

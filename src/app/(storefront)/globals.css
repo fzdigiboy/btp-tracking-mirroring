@@ -65,13 +65,13 @@ body {
 .custom_container {
   margin: 0 auto;
   max-width: 1220px;
-  padding: 0 1.25rem;
+  padding-inline: 1.25rem;
 
   @media only screen and (min-width: 768px) {
-    padding: 0 1rem;
+    padding-inline:1rem;
   }
 
   @media only screen and (min-width: 864px) {
-    padding: 0 0.5rem;
+    padding-inline:0.5rem;
   }
 }

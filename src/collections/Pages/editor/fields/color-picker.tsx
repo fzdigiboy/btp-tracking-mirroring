@@ -282,10 +282,10 @@ export const ColorPickerField = ({
 
 export const colorPickerField: ExternalField<string> = {
   type: 'custom',
-  render: ({ field, name, value, onChange }: any) => {
+  render: ({ name, value, onChange }: any) => {
     return (
       <ColorPickerField
-        label={field.label || name}
+        label={name}
         value={value || ''}
         onChange={onChange}
         placeholder="Choose or enter a color"
