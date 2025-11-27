@@ -10,6 +10,7 @@ export interface HeroSectionProps {
     text: string
     href: string
     color: string
+    textColor: string
   }>
   image?: {
     url: string
@@ -33,6 +34,7 @@ export const HeroSectionBlock: ComponentConfig<HeroSectionProps> = {
         text: { type: 'text' },
         href: { type: 'text' },
         color: colorPickerField,
+        textColor: colorPickerField,
       },
     },
     image: {
@@ -63,11 +65,13 @@ export const HeroSectionBlock: ComponentConfig<HeroSectionProps> = {
         text: 'Request a Free Quote',
         href: '#',
         color: '#003366',
+        textColor: '#FFFFFFFF',
       },
       {
         text: 'Our Services',
         href: '#',
         color: '#FFFFFFFF',
+        textColor: '#003366',
       },
     ],
     image: {

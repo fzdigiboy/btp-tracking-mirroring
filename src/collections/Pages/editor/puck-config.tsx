@@ -5,11 +5,13 @@ import { ConstructionBlock } from './btp_blocks/hp-construction'
 import { ServiceBlock4 } from './btp_blocks/service-block-4'
 import { NumberBlock } from './btp_blocks/hp-number'
 import { PuckProps } from './puck-types'
+import { AboutBlock1 } from './btp_blocks/about-block1'
 
 // ========================================
 // PORTFOLIO DESIGN BLOCKS (blo_portfolio)
 // ========================================
 import { AuthProvider } from '../../../contexts/auth-context'
+import { ServicesBlock1 } from './btp_blocks/services-block1'
 import { RecentProjectSectionBlock } from './btp_blocks/hp-recent-projects'
 import { TestimonialsSectionBlock } from './btp_blocks/hp-testimonials'
 import { StoryMissionSectionBlock } from './btp_blocks/about-story'
@@ -54,7 +56,7 @@ export const config: Config<PuckProps> = {
     // ===== About Us =====
     about_us: {
       title: '📰 About Us',
-      components: ['StoryMissionSectionBlock', 'TeamSectionBlock', 'ABBlock4'],
+      components: ['AboutBlock1','StoryMissionSectionBlock', 'TeamSectionBlock', 'ABBlock4'],
     },
 
     // ===== Services =====
@@ -103,7 +105,9 @@ export const config: Config<PuckProps> = {
     ABBlock4,
     ServiceBlock4,
     // ===== About Us =====
+    AboutBlock1,
     // ===== Services =====
+    ServicesBlock1,
     // ===== Projects =====
     // ===== Project Details =====
     // ===== Testimonials =====

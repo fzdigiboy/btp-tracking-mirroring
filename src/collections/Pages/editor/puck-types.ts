@@ -13,6 +13,8 @@ export type PuckProps = {
     button: Array<{
       text: string
       href: string
+      color: string
+      textColor: string
     }>
     image?: {
       url: string
@@ -20,6 +22,32 @@ export type PuckProps = {
     }
     isFullWidth: string
   }
+
+  // ABOUT PAGE
+  AboutBlock1: {
+    title: string
+    description: string
+    image?: {
+      url: string
+      alt: string
+    }
+    linearGradient: string
+    isFullWidth: string
+  }
+
+
+  // SERVICES PAGE
+  ServicesBlock1: {
+    title: string
+    description: string
+    image?: {
+      url: string
+      alt: string
+    }
+    linearGradient: string
+    isFullWidth: string
+  }
+
 
   NumberBlock: {
     numberBlocks: Array<{

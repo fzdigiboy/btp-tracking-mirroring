@@ -24,13 +24,16 @@ export default function HeroSectionComponent({
         <div className="flex-wrap gap-4 flex mx-auto mt-6">
           {buttons?.map((button: any, index: number) => {
             const buttonColor = button?.color
+            const buttonTextColor = button?.textColor
             return (
               <button
                 key={index}
-                style={{ backgroundColor: buttonColor }}
-                className={`flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-8 text-white text-base font-bold tracking-wide hover:bg-opacity-90 transition-colors`}
+                style={{ backgroundColor: buttonColor, color: buttonTextColor }}
+                className={`flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-8 text-base font-bold tracking-wide hover:bg-opacity-90 transition-colors`}
               >
-                <span className="truncate">{button?.text}</span>
+                <a href={button?.href} className="truncate">
+                  {button?.text}
+                </a>
               </button>
             )
           })}
