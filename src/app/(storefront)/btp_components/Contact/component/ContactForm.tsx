@@ -1,27 +1,54 @@
 'use client'
 
 import { ContactFormProps } from '@/collections/Pages/editor/btp_blocks/contact_form_block'
-import { useState } from 'react'
+import { createContact } from '@/lib/create-contact-db'
+import { getAllServices } from '@/lib/server.services'
+import { useEffect, useState } from 'react'
 
 export default function ContactForm({ title, button }: ContactFormProps) {
+  const [serviceData, setServices] = useState<any[]>([])
+  const fetchServices = async () => {
+    const data: any[] = await getAllServices({ limit: 10 })
+    setServices(data)
+  }
+  useEffect(() => {
+    fetchServices()
+  }, [])
   const [formData, setFormData] = useState({
-    salutation: '',
     firstName: '',
     lastName: '',
     email: '',
     countryCode: '+228',
     phone: '',
-    service: '',
+    service: 0,
     message: '',
   })
   const [submitted, setSubmitted] = useState(false)
+  // Reset all values when the form is submitted
+  const resetForm = () => {
+    setFormData({
+      firstName: '',
+      lastName: '',
+      email: '',
+      countryCode: '+228',
+      phone: '',
+      service: 0,
+      message: '',
+    })
+  }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log(formData)
-    setSubmitted(true)
-    setTimeout(() => setSubmitted(false), 5000)
+    // console.log('Form data:', formData)
+    const result = await createContact(formData)
+    if (result.success) {
+      // console.log('Contact created successfully:', result.contact)
+      setSubmitted(true)
+      setTimeout(() => setSubmitted(false), 5000)
+      resetForm()
+    } else {
+      alert('Erreur lors de la soumission du formulaire')
+    }
   }
 
   const handleChange = (
@@ -133,11 +160,16 @@ export default function ContactForm({ title, button }: ContactFormProps) {
             onChange={handleChange}
             required
           >
-            <option value="">Select a service...</option>
-            <option value="investment">Investment Inquiry</option>
-            <option value="legal">Legal Consultation</option>
-            <option value="partnership">Project Partnership</option>
-            <option value="general">General Question</option>
+            <option value={0} disabled>
+              Selectionnez un service...
+            </option>
+            {serviceData.map((service: any, index: number) => {
+              return (
+                <option key={index} value={service.id}>
+                  {service.titre}
+                </option>
+              )
+            })}
           </select>
         </div>
 
@@ -173,7 +205,8 @@ export default function ContactForm({ title, button }: ContactFormProps) {
       {submitted && (
         <div className="mt-6 p-4 rounded-lg bg-green-100 border border-green-300">
           <p className="text-green-800 text-center font-medium">
-            Thank you for your inquiry! Our team will get back to you within 2 business days.
+            {/* Translate this text in french */}
+            Merci pour votre demande! Notre équipe va vous répondre dans les 2 jours ouvrables.
           </p>
         </div>
       )}
