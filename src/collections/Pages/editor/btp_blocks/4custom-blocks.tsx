@@ -68,19 +68,19 @@ export const Custom4Blocks: ComponentConfig<Custom4BlocksProps> = {
         // },
     },
     defaultProps: {
-        variant: 'about',
-        title: 'Ready to Start Your Project?',
-        description: 'Contact us today for a free consultation.',
+        variant: 'home',
+        title: 'Ready to Start Your Project in Togo?',
+        description: 'Let\'s build your future, together. Contact us for a free, no-obligation consultation.',
         titleColor: '#000000',
-        descriptionColor: '#ffffff',
+        descriptionColor: '#003366',
         backgroundColor: '#003366',
         sectionBgColor: '#f9fafb',
         isFullWidth: 'No',
         button: {
-            text: 'Get Started',
+            text: 'Get In Touch',
             href: '#contact',
-            color: '#FFFFFF',
-            textColor: '#003366',
+            color: '#003366',
+            textColor: '#ffffff',
         },
         // haveButton: 'Yes',
     },
@@ -98,15 +98,15 @@ export const Custom4Blocks: ComponentConfig<Custom4BlocksProps> = {
         }
 
         switch (variant) {
-            case 'home':
-                return <ContactCTA {...props} />
+            case 'about':
+                return <AboutCTA {...props} />
             case 'services':
                 return <ServicesCTA {...props} />
             case 'testimonials':
                 return <TestimonialsCTA {...props} />
-            case 'about':
-            default:
-                return <AboutCTA {...props} />
+            case 'home':
+            default:                
+                return <ContactCTA {...props} />
         }
     }
 }
