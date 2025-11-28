@@ -111,7 +111,7 @@ export const HeaderBlock: ComponentConfig<HeaderProps> = {
     logo: {
       text: 'TogoBuild',
       image: {
-        url: 'https://...',
+        url: 'https://placehold.co/200x200',
         alt: 'TogoBuild',
       },
     },

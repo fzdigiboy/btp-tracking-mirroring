@@ -1,6 +1,5 @@
 'use client'
 
-import { Media } from '@/payload-types'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
@@ -55,43 +54,8 @@ export default function Header({ logo, navLinks, raqButton }: any) {
                 </Link>
               )
             })}
-            {/* <Link
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-              href="/Home"
-            >
-              Home
-            </Link>
-            <Link
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-              href="/About"
-            >
-              About Us
-            </Link>
-            <Link
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-              href="/Services"
-            >
-              Services
-            </Link>
-            <Link
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-              href="/Projects"
-            >
-              Projects
-            </Link>
-            <Link
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-              href="/Testimonials"
-            >
-              Testimonials
-            </Link>
-            <Link
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-              href="/Contact"
-            >
-              Contact
-            </Link> */}
           </nav>
+          {/* TODO: Mettre un lien ici vers la page de contact */}
           <button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-6 bg-primary text-white text-sm font-bold tracking-wide hover:bg-opacity-90 transition-colors">
             <span className="truncate">{raqButton?.text || 'Request a Quote'}</span>
           </button>
@@ -127,39 +91,6 @@ export default function Header({ logo, navLinks, raqButton }: any) {
                 </Link>
               )
             })}
-            {/* <Link className="text-sm font-medium hover:text-primary transition-colors" href="/Home">
-              Home
-            </Link>
-            <Link
-              className="text-sm font-medium hover:text-primary transition-colors"
-              href="/About"
-            >
-              About Us
-            </Link>
-            <Link
-              className="text-sm font-medium hover:text-primary transition-colors"
-              href="/Services"
-            >
-              Services
-            </Link>
-            <Link
-              className="text-sm font-medium hover:text-primary transition-colors"
-              href="/Projects"
-            >
-              Projects
-            </Link>
-            <Link
-              className="text-sm font-medium hover:text-primary transition-colors"
-              href="/Testimonials"
-            >
-              Testimonials
-            </Link>
-            <Link
-              className="text-sm font-medium hover:text-primary transition-colors"
-              href="/Contact"
-            >
-              Contact
-            </Link> */}
             <button className="flex cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-6 bg-primary text-white text-sm font-bold tracking-wide hover:bg-opacity-90 transition-colors">
               <span className="truncate">{raqButton?.text || 'Request a Quote'}</span>
             </button>

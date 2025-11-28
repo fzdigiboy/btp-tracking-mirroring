@@ -1,5 +1,8 @@
 // import { Product } from "@/lib/products";
 
+import { ContactFormProps } from './btp_blocks/contact_form_block'
+import { TitleDescriptionProps } from './btp_blocks/title_description'
+
 // Déclarer les blocs avec leur attributs
 export type PuckProps = {
   // HeadingBlock: {
@@ -29,7 +32,7 @@ export type PuckProps = {
       color: string
     }
   }
-
+  TitleDescriptionBlock: TitleDescriptionProps
   HeroSectionBlock: {
     title: string
     description: string
@@ -206,6 +209,9 @@ export type PuckProps = {
     }
     // haveButton: string
   }
+
+  // Contact
+  ContactFormBlock: ContactFormProps
   // TextBlock: {
   //   text: string
   //   align?: 'left' | 'center' | 'right'

@@ -1,10 +1,12 @@
+import { HeroSectionProps } from '@/collections/Pages/editor/btp_blocks/hp-hero'
+
 export default function HeroSectionComponent({
   title,
   description,
   button: buttons,
   image,
   isFullWidth,
-}: any) {
+}: HeroSectionProps) {
   return (
     <div className={isFullWidth === 'No' ? 'custom_container' : ''}>
       <div
