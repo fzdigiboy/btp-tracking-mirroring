@@ -1,4 +1,4 @@
-export default function ProjectHeader() {
+export default function ProjectHeader({}) {
     return (
         <div className="mb-8">
             <h1 className="text-4xl md:text-5xl font-black leading-tight tracking-[-0.033em] text-foreground">

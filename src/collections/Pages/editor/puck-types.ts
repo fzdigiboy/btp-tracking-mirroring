@@ -212,6 +212,11 @@ export type PuckProps = {
 
   // Contact
   ContactFormBlock: ContactFormProps
+  TestimoniesSectionBlock: {
+    title: string
+    isFullWidth: string
+  }
+  
   // TextBlock: {
   //   text: string
   //   align?: 'left' | 'center' | 'right'

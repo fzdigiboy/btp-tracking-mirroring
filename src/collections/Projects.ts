@@ -91,11 +91,11 @@ export const Projects: CollectionConfig = {
       relationTo: 'project-types',
       required: true,
     },
-    {
-      name: 'testimonies',
-      type: 'relationship',
-      relationTo: 'testimonies',
-      hasMany: true,
-    },
+    // {
+    //   name: 'testimonies',
+    //   type: 'relationship',
+    //   relationTo: 'testimonies',
+    //   hasMany: true,
+    // },
   ],
 }
