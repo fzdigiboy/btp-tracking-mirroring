@@ -5,6 +5,8 @@ import { ConstructionBlock } from './btp_blocks/hp-construction'
 import { ServiceBlock4 } from './btp_blocks/service-block-4'
 import { NumberBlock } from './btp_blocks/hp-number'
 import { PuckProps } from './puck-types'
+import { HeaderBlock } from './btp_blocks/header_block'
+import { PartnersBlock } from './btp_blocks/hp-trusted_block'
 import { AboutBlock1 } from './btp_blocks/about-block1'
 
 // ========================================
@@ -44,25 +46,32 @@ export const config: Config<PuckProps> = {
     // ===== LAYOUT =====
     layout: {
       title: '🏗️ Layout & Structure',
-      components: ['FooterBlocks',], // Header et Footer (les blocks)
+      components: ['FooterBlocks', 'HeaderBlock'], // Header et Footer (les blocks)
     },
 
     // ===== HOMEPAGE =====
     homepage: {
       title: '🏠 Home',
-      components: ['HeroSectionBlock', 'RecentProjectSectionBlock', 'TestimonialsSectionBlock', 'NumberBlock', 'ConstructionBlock',],
+      components: [
+        'HeroSectionBlock',
+        'RecentProjectSectionBlock',
+        'TestimonialsSectionBlock',
+        'NumberBlock',
+        'ConstructionBlock',
+        'PartnersBlock',
+      ],
     },
 
     // ===== About Us =====
     about_us: {
       title: '📰 About Us',
-      components: ['AboutBlock1','StoryMissionSectionBlock', 'TeamSectionBlock', 'ABBlock4'],
+      components: ['AboutBlock1', 'StoryMissionSectionBlock', 'TeamSectionBlock', 'ABBlock4'],
     },
 
     // ===== Services =====
     services: {
       title: '📝 Services',
-      components: ["ServiceBlock4"],
+      components: ['ServiceBlock4'],
     },
 
     // ===== Projects =====²
@@ -92,6 +101,10 @@ export const config: Config<PuckProps> = {
 
   components: {
     // Tous les blocs créés
+    // ===== HEADER =====
+    HeaderBlock,
+    // ===== PARTNERS =====
+    PartnersBlock,
     // ===== LAYOUT =====
     // ===== HOMEPAGE =====
     HeroSectionBlock,

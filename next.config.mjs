@@ -6,6 +6,14 @@ dotenv.config()
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**', // autorise toutes les images externes
+      },
+    ],
+  },
   // Your Next.js config here
   serverExternalPackages: [],
   webpack: (webpackConfig, { isServer }) => {

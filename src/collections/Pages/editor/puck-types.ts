@@ -7,6 +7,29 @@ export type PuckProps = {
   //   level: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   //   align?: 'left' | 'center' | 'right'
   // }
+  // ===== HEADER =====
+  // 🧠 Les blocs internes sont dynamiques
+  HeaderBlock: {
+    logo?: {
+      text?: string
+      image?: {
+        url: string
+        alt: string
+      }
+    }
+    navLinks?: Array<{
+      label: string
+      linkType: 'internal' | 'external'
+      internalPage?: any
+      externalUrl?: string
+    }>
+    raqButton?: {
+      text: string
+      href: string
+      color: string
+    }
+  }
+
   HeroSectionBlock: {
     title: string
     description: string
@@ -35,7 +58,6 @@ export type PuckProps = {
     isFullWidth: string
   }
 
-
   // SERVICES PAGE
   ServicesBlock1: {
     title: string
@@ -47,7 +69,6 @@ export type PuckProps = {
     linearGradient: string
     isFullWidth: string
   }
-
 
   NumberBlock: {
     numberBlocks: Array<{
@@ -82,7 +103,7 @@ export type PuckProps = {
       links: Array<{
         label: string
         href: string
-        icons?:string
+        icons?: string
       }>
     }>
     copyrightText?: string
@@ -145,6 +166,26 @@ export type PuckProps = {
     }>
     // TODO: A mettre dans chaque bloc
     isFullWidth: string
+  }
+
+  // Partner Section
+  PartnersBlock: {
+    variant: 'simple' | 'detailed'
+    // Simple
+    simpleTitle?: string
+
+    // Detailed
+    headline?: string
+    detailedTitle?: string
+    description?: string
+
+    partners: Array<{
+      name: string
+      logo: {
+        url: string
+        alt: string
+      }
+    }>
   }
   // TextBlock: {
   //   text: string
