@@ -8,13 +8,13 @@ function getFileType(urlOrPath: string): 'image' | 'video' | 'unknown' {
   const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.bmp', '.svg'];
   const videoExtensions = ['.mp4', '.webm', '.ogg', '.mov', '.avi', '.mkv', '.m3u8'];
   
-  const lowerPath = urlOrPath.toLowerCase();
+  const lowerPath = urlOrPath?.toLowerCase();
   
-  if (imageExtensions.some(ext => lowerPath.endsWith(ext))) {
+  if (imageExtensions.some(ext => lowerPath?.endsWith(ext))) {
     return 'image';
   }
   
-  if (videoExtensions.some(ext => lowerPath.endsWith(ext))) {
+  if (videoExtensions.some(ext => lowerPath?.endsWith(ext))) {
     return 'video';
   }
   
@@ -23,10 +23,17 @@ function getFileType(urlOrPath: string): 'image' | 'video' | 'unknown' {
 
 interface MediaGalleryProps {
   mediaUrls: string[];
+  emptyFile?:string
+  error?:{
+    title:string
+    subTitle:string
+  }
+  
+  isFullWidth?: string
 }
 
 // Composant pour gérer le chargement avec fallback
-function MediaPlayer({ url, index }: { url: string; index: number }) {
+function MediaPlayer({ url, index ,error}: { url: string; index: number,error?:{ title:string,subTitle:string} }) {
   const initialType = getFileType(url);
   const [currentType, setCurrentType] = useState<'video' | 'image' | 'error'>(
     initialType === 'unknown' ? 'video' : initialType
@@ -98,9 +105,9 @@ function MediaPlayer({ url, index }: { url: string; index: number }) {
           <svg className="w-16 h-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          <p className="text-white text-lg font-medium">Impossible de charger le média</p>
+          <p className="text-white text-lg font-medium">{error?.title?? 'Erreur'}</p>
           <p className="text-gray-400 text-sm text-center max-w-md">
-            Le fichier n'a pas pu être chargé. Vérifiez l'URL ou le format du fichier.
+            {error?.subTitle?? 'Le fichier n\'a pas pu être chargé. Vérifiez l\'URL ou le format du fichier.'}
           </p>
         </div>
       )}
@@ -170,7 +177,7 @@ function ThumbnailPreview({ url, index, isSelected, onClick }: {
   );
 }
 
-export default function MediaGallery({ mediaUrls }: MediaGalleryProps) {
+export default function MediaGallery({ mediaUrls , emptyFile, error, isFullWidth }: MediaGalleryProps) {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [refreshKey, setRefreshKey] = useState(0);
   
@@ -186,7 +193,7 @@ export default function MediaGallery({ mediaUrls }: MediaGalleryProps) {
   if (!mediaUrls || mediaUrls.length === 0) {
     return (
       <div className="p-8 text-center text-gray-500">
-        Aucun média à afficher
+        {emptyFile ?? 'Aucun média à afficher'}
       </div>
     );
   }
@@ -195,17 +202,17 @@ export default function MediaGallery({ mediaUrls }: MediaGalleryProps) {
   const isSingleMedia = mediaUrls.length === 1;
 
   return (
-    <div className="mb-12">
+    <div className={`mb-12 py-2 sm:py-8 ${(isFullWidth ?? 'Yes')==='No'?'custom_container':''}`}>
       <div className="grid grid-cols-12 gap-4 h-auto md:h-[600px]">
         {/* Conteneur principal */}
         <div className={`${isSingleMedia ? 'col-span-12' : 'col-span-12 md:col-span-8'} h-full overflow-hidden rounded-xl relative`}>
-          <MediaPlayer key={`media-${selectedIndex}-${selectedMedia}-${refreshKey}`} url={selectedMedia} index={selectedIndex} />
+          <MediaPlayer error={error}  key={`media-${selectedIndex}-${selectedMedia}-${refreshKey}`} url={selectedMedia} index={selectedIndex} />
         </div>
 
         {/* Miniatures */}
         {!isSingleMedia && (
           <div className="col-span-12 md:col-span-4 flex flex-row md:flex-col gap-4 overflow-x-auto md:overflow-y-auto scrollbar-hide pb-2 md:pb-0">
-            {mediaUrls.map((url, index) => (
+            {mediaUrls?.map((url, index) => (
               <ThumbnailPreview
                 key={index}
                 url={url}

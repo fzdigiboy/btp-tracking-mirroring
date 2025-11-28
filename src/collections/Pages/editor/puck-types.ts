@@ -217,6 +217,37 @@ export type PuckProps = {
     isFullWidth: string
   }
   
+  HeadingBlock: {
+    title: string
+    description: string
+    isFullWidth: string
+    align: {
+      title: string
+      description: string
+    }
+    color: {
+      text: string
+      descrition: string
+    }
+  }
+
+  ImageGalleryBlock: {
+    emptyFile: string
+    error: {
+      title: string
+      subTitle: string
+    }
+    images: Array<{
+      image:string
+    }>
+    isFullWidth: string
+  }
+  
+  ServiceListBlock: {
+    title: string
+    isFullWidth: string
+    limit: number  
+  }
   // TextBlock: {
   //   text: string
   //   align?: 'left' | 'center' | 'right'

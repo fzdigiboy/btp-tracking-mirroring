@@ -1,28 +1,30 @@
 import { Config } from '@measured/puck'
 import { ABBlock4 } from './btp_blocks/ab-block-4'
-import { FooterBlocks } from './btp_blocks/footer'
-import { ConstructionBlock } from './btp_blocks/hp-construction'
-import { ServiceBlock4 } from './btp_blocks/service-block-4'
-import { NumberBlock } from './btp_blocks/hp-number'
-import { PuckProps } from './puck-types'
-import { HeaderBlock } from './btp_blocks/header_block'
-import { PartnersBlock } from './btp_blocks/hp-trusted_block'
 import { AboutBlock1 } from './btp_blocks/about-block1'
-
+import { FooterBlocks } from './btp_blocks/footer'
+import { HeaderBlock } from './btp_blocks/header_block'
+import { HeadingBlock } from './btp_blocks/heading-blocks'
+import { ConstructionBlock } from './btp_blocks/hp-construction'
+import { NumberBlock } from './btp_blocks/hp-number'
+import { PartnersBlock } from './btp_blocks/hp-trusted_block'
+import { ServiceBlock4 } from './btp_blocks/service-block-4'
+import { ServiceListBlock } from './btp_blocks/service-blocks'
+import { PuckProps } from './puck-types'
 // ========================================
 // PORTFOLIO DESIGN BLOCKS (blo_portfolio)
 // ========================================
 import { AuthProvider } from '../../../contexts/auth-context'
-import { ServicesBlock1 } from './btp_blocks/services-block1'
-import { RecentProjectSectionBlock } from './btp_blocks/hp-recent-projects'
-import { TestimonialsSectionBlock } from './btp_blocks/hp-testimonials'
+import { Custom4Blocks } from './btp_blocks/4custom-blocks'
 import { StoryMissionSectionBlock } from './btp_blocks/about-story'
 import { TeamSectionBlock } from './btp_blocks/about-team'
-import { HeroSectionBlock } from './btp_blocks/hp-hero'
-import { Custom4Blocks } from './btp_blocks/4custom-blocks'
-import { TitleDescriptionBlock } from './btp_blocks/title_description'
 import { ContactFormBlock } from './btp_blocks/contact_form_block'
+import { HeroSectionBlock } from './btp_blocks/hp-hero'
+import { RecentProjectSectionBlock } from './btp_blocks/hp-recent-projects'
+import { TestimonialsSectionBlock } from './btp_blocks/hp-testimonials'
+import { ImageGalleryBlock } from './btp_blocks/mediaPlayers'
+import { ServicesBlock1 } from './btp_blocks/services-block1'
 import { TestimoniesSectionBlock } from './btp_blocks/testimonials'
+import { TitleDescriptionBlock } from './btp_blocks/title_description'
 
 export const config: Config<PuckProps> = {
   root: {
@@ -50,7 +52,7 @@ export const config: Config<PuckProps> = {
     // ===== LAYOUT =====
     layout: {
       title: '🏗️ Layout & Structure',
-      components: ['FooterBlocks', 'HeaderBlock'], // Header et Footer (les blocks)
+      components: ['FooterBlocks', 'HeaderBlock','HeadingBlock'], // Header et Footer (les blocks)
     },
 
     // ===== HOMEPAGE =====
@@ -81,7 +83,7 @@ export const config: Config<PuckProps> = {
     // ===== Services =====
     services: {
       title: '📝 Services',
-      components: ['ServiceBlock4'],
+      components: ['ServiceBlock4',"ServicesBlock1","ServiceListBlock"],
     },
 
     // ===== Projects =====²
@@ -99,7 +101,7 @@ export const config: Config<PuckProps> = {
     // ===== Testimonials =====
     testimonials: {
       title: '📄 Testimonials',
-      components: ['TestimoniesSectionBlock'],
+      components: ['TestimoniesSectionBlock','HeadingBlock', 'ImageGalleryBlock'],
     },
 
     // ===== Contact =====
@@ -134,9 +136,12 @@ export const config: Config<PuckProps> = {
     // ===== CTA Blocks =====
     Custom4Blocks,
     TestimoniesSectionBlock,
+    ServiceListBlock,
     // ===== Projects =====
     // ===== Project Details =====
     // ===== Testimonials =====
+        HeadingBlock,
+    ImageGalleryBlock,
     // ===== Contact =====
     TitleDescriptionBlock,
     ContactFormBlock,

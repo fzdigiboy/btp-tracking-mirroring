@@ -1,10 +1,10 @@
-import Header from "../common_component/header";
 import Footer from "../common_component/footer";
-import TestimonialsHeader from "./component/TestimonialsHeader";
-import VideoPlayer from "./component/VideoPlayer";
+import Header from "../common_component/header";
 import FilterChips from "./component/FilterChips";
 import TestimonialCard from "./component/TestimonialCard";
 import TestimonialsCTA from "./component/TestimonialsCTA";
+import TestimonialsHeader from "./component/TestimonialsHeader";
+import MediaGallery from "./component/VideoPlayer";
 
 export default function Testimonials() {
     const testimonials = [
@@ -58,6 +58,14 @@ export default function Testimonials() {
         }
     ];
 
+
+
+                                  // Exemple avec plusieurs médias (images et vidéos)
+const mediaUrls = [
+  "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=1000",
+  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+  "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1000"
+];
     return (
         <div className="relative flex h-auto min-h-screen w-full flex-col">
             <div className="layout-container flex h-full grow flex-col">
@@ -66,7 +74,15 @@ export default function Testimonials() {
                     <div className="flex flex-col gap-10 sm:gap-16 items-center w-full">
                         <div className="layout-content-container flex flex-col flex-1 gap-10 sm:gap-12">
                             <TestimonialsHeader />
-                            <VideoPlayer />
+                            {/* <MediaGallery /> */}
+
+
+         <h2 className="text-2xl font-semibold text-white mb-4">Plusieurs médias</h2>
+         <MediaGallery mediaUrls={mediaUrls} />
+        
+      
+       
+    
                             <FilterChips />
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {testimonials.map((testimonial, index) => (
