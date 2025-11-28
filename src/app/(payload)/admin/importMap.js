@@ -1,4 +1,5 @@
 import { default as default_587fb76ccf6cf2ca212b3fee0a3e420b } from '@/collections/Pages/components/PuckEditor'
+import { default as default_691d890702a219be9152eeb69fd6552c } from 'src/collections/Pages/editor/fields/Icons'
 import { RscEntryLexicalCell as RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
 import { RscEntryLexicalField as RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
 import { LexicalDiffComponent as LexicalDiffComponent_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
@@ -25,6 +26,7 @@ import { ItalicFeatureClient as ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0
 
 export const importMap = {
   "@/collections/Pages/components/PuckEditor#default": default_587fb76ccf6cf2ca212b3fee0a3e420b,
+  "src/collections/Pages/editor/fields/Icons#default": default_691d890702a219be9152eeb69fd6552c,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalCell": RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalField": RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e,
   "@payloadcms/richtext-lexical/rsc#LexicalDiffComponent": LexicalDiffComponent_44fe37237e0ebf4470c9990d8cb7b07e,

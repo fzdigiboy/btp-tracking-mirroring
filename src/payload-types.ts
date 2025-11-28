@@ -222,7 +222,7 @@ export interface Page {
 export interface Service {
   id: number;
   titre: string;
-  logo: 'logo1' | 'logo2' | 'logo3';
+  logo: string;
   description: string;
   image: number | Media;
   button: {

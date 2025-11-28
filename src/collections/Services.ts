@@ -20,14 +20,14 @@ export const Services: CollectionConfig = {
     },
     {
       name: 'logo',
-      type: 'select',
+      type: 'text',
       required: true,
-      options: [
-        { label: 'Logo 1', value: 'logo1' },
-        { label: 'Logo 2', value: 'logo2' },
-        { label: 'Logo 3', value: 'logo3' },
-        // Ajoutez vos options de logo ici
-      ],
+      defaultValue: '🗺️',
+      admin: {
+        components: {
+          Field: 'src/collections/Pages/editor/fields/Icons',
+        },
+      },
     },
     {
       name: 'description',

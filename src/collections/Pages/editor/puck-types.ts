@@ -191,6 +191,7 @@ export type PuckProps = {
     }>
   }
 
+<<<<<<< HEAD
   // CTA Block (4 Variants)
   Custom4Blocks: {
     variant: 'about' | 'home' | 'services' | 'testimonials'
@@ -217,6 +218,39 @@ export type PuckProps = {
     isFullWidth: string
   }
   
+=======
+  HeadingBlock: {
+    title: string
+    description: string
+    isFullWidth: string
+    align: {
+      title: string
+      description: string
+    }
+    color: {
+      text: string
+      descrition: string
+    }
+  }
+
+  ImageGalleryBlock: {
+    emptyFile: string
+    error: {
+      title: string
+      subTitle: string
+    }
+    images: Array<{
+      image:string
+    }>
+    isFullWidth: string
+  }
+  
+  ServiceListBlock: {
+    title: string
+    isFullWidth: string
+    limit: number  
+  }
+>>>>>>> e0a89c8 (ajout des blocks)
   // TextBlock: {
   //   text: string
   //   align?: 'left' | 'center' | 'right'
