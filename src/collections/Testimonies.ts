@@ -24,5 +24,18 @@ export const Testimonies: CollectionConfig = {
       type: 'textarea',
       required: true,
     },
+    {
+      name: 'country',
+      label: 'Country',
+      type: 'text',
+      required: true,
+    },
+    {
+      name: 'project',
+      label: 'Project',
+      type: 'relationship',
+      relationTo: 'projects',
+      required: true,
+    },
   ],
 }

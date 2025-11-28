@@ -22,6 +22,7 @@ import { HeroSectionBlock } from './btp_blocks/hp-hero'
 import { Custom4Blocks } from './btp_blocks/4custom-blocks'
 import { TitleDescriptionBlock } from './btp_blocks/title_description'
 import { ContactFormBlock } from './btp_blocks/contact_form_block'
+import { TestimoniesSectionBlock } from './btp_blocks/testimonials'
 
 export const config: Config<PuckProps> = {
   root: {
@@ -98,7 +99,7 @@ export const config: Config<PuckProps> = {
     // ===== Testimonials =====
     testimonials: {
       title: '📄 Testimonials',
-      components: [],
+      components: ['TestimoniesSectionBlock'],
     },
 
     // ===== Contact =====
@@ -132,6 +133,7 @@ export const config: Config<PuckProps> = {
     ServicesBlock1,
     // ===== CTA Blocks =====
     Custom4Blocks,
+    TestimoniesSectionBlock,
     // ===== Projects =====
     // ===== Project Details =====
     // ===== Testimonials =====

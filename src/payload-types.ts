@@ -262,21 +262,8 @@ export interface Testimony {
   id: number;
   name: string;
   content: string;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "contacts".
- */
-export interface Contact {
-  id: number;
-  firstname: string;
-  lastname: string;
-  email: string;
-  phone: string;
-  service: number | Service;
-  message: string;
+  country: string;
+  project: number | Project;
   updatedAt: string;
   createdAt: string;
 }
@@ -313,7 +300,21 @@ export interface Project {
     services: (number | Service)[];
   };
   projectType: number | ProjectType;
-  testimonies?: (number | Testimony)[] | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contacts".
+ */
+export interface Contact {
+  id: number;
+  firstname: string;
+  lastname: string;
+  email: string;
+  phone: string;
+  service: number | Service;
+  message: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -506,6 +507,8 @@ export interface ProjectTypesSelect<T extends boolean = true> {
 export interface TestimoniesSelect<T extends boolean = true> {
   name?: T;
   content?: T;
+  country?: T;
+  project?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -545,7 +548,6 @@ export interface ProjectsSelect<T extends boolean = true> {
         services?: T;
       };
   projectType?: T;
-  testimonies?: T;
   updatedAt?: T;
   createdAt?: T;
 }
