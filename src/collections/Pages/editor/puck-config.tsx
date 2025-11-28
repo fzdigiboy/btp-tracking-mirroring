@@ -14,20 +14,17 @@ import { PuckProps } from './puck-types'
 // PORTFOLIO DESIGN BLOCKS (blo_portfolio)
 // ========================================
 import { AuthProvider } from '../../../contexts/auth-context'
+import { Custom4Blocks } from './btp_blocks/4custom-blocks'
 import { StoryMissionSectionBlock } from './btp_blocks/about-story'
 import { TeamSectionBlock } from './btp_blocks/about-team'
-import { HeroSectionBlock } from './btp_blocks/hp-hero'
-<<<<<<< HEAD
-import { Custom4Blocks } from './btp_blocks/4custom-blocks'
-import { TitleDescriptionBlock } from './btp_blocks/title_description'
 import { ContactFormBlock } from './btp_blocks/contact_form_block'
-import { TestimoniesSectionBlock } from './btp_blocks/testimonials'
-=======
+import { HeroSectionBlock } from './btp_blocks/hp-hero'
 import { RecentProjectSectionBlock } from './btp_blocks/hp-recent-projects'
 import { TestimonialsSectionBlock } from './btp_blocks/hp-testimonials'
 import { ImageGalleryBlock } from './btp_blocks/mediaPlayers'
 import { ServicesBlock1 } from './btp_blocks/services-block1'
->>>>>>> e0a89c8 (ajout des blocks)
+import { TestimoniesSectionBlock } from './btp_blocks/testimonials'
+import { TitleDescriptionBlock } from './btp_blocks/title_description'
 
 export const config: Config<PuckProps> = {
   root: {
@@ -104,11 +101,7 @@ export const config: Config<PuckProps> = {
     // ===== Testimonials =====
     testimonials: {
       title: '📄 Testimonials',
-<<<<<<< HEAD
-      components: ['TestimoniesSectionBlock'],
-=======
-      components: ['HeadingBlock', 'ImageGalleryBlock'],
->>>>>>> e0a89c8 (ajout des blocks)
+      components: ['TestimoniesSectionBlock','HeadingBlock', 'ImageGalleryBlock'],
     },
 
     // ===== Contact =====
@@ -140,13 +133,10 @@ export const config: Config<PuckProps> = {
     AboutBlock1,
     // ===== Services =====
     ServicesBlock1,
-<<<<<<< HEAD
     // ===== CTA Blocks =====
     Custom4Blocks,
     TestimoniesSectionBlock,
-=======
     ServiceListBlock,
->>>>>>> e0a89c8 (ajout des blocks)
     // ===== Projects =====
     // ===== Project Details =====
     // ===== Testimonials =====
