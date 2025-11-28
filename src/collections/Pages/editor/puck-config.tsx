@@ -19,6 +19,7 @@ import { TestimonialsSectionBlock } from './btp_blocks/hp-testimonials'
 import { StoryMissionSectionBlock } from './btp_blocks/about-story'
 import { TeamSectionBlock } from './btp_blocks/about-team'
 import { HeroSectionBlock } from './btp_blocks/hp-hero'
+import { Custom4Blocks } from './btp_blocks/4custom-blocks'
 
 export const config: Config<PuckProps> = {
   root: {
@@ -65,7 +66,7 @@ export const config: Config<PuckProps> = {
     // ===== About Us =====
     about_us: {
       title: '📰 About Us',
-      components: ['AboutBlock1', 'StoryMissionSectionBlock', 'TeamSectionBlock', 'ABBlock4'],
+      components: ['AboutBlock1', 'StoryMissionSectionBlock', 'TeamSectionBlock', 'ABBlock4', 'Custom4Blocks'],
     },
 
     // ===== Services =====
@@ -121,6 +122,8 @@ export const config: Config<PuckProps> = {
     AboutBlock1,
     // ===== Services =====
     ServicesBlock1,
+    // ===== CTA Blocks =====
+    Custom4Blocks,
     // ===== Projects =====
     // ===== Project Details =====
     // ===== Testimonials =====

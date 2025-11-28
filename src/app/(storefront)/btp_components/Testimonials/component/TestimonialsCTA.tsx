@@ -1,17 +1,33 @@
-export default function TestimonialsCTA() {
+export default function TestimonialsCTA(
+    {
+        title,
+        description,
+        titleColor,
+        descriptionColor,
+        backgroundColor,
+        sectionBgColor,
+        isFullWidth,
+        button,
+        // haveButton
+    }: any
+) {
     return (
-        <section className="w-full bg-card border-t border-border py-16 sm:py-24">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">
-                    Inspired by these successes?
-                </h2>
-                <p className="mt-4 max-w-2xl mx-auto text-lg text-text-muted">
-                    You don't need to travel to build your dream project in Togo. Let's build yours, together.
-                </p>
-                <div className="mt-8 flex justify-center">
-                    <button className="flex items-center justify-center rounded-lg h-12 px-6 bg-primary text-white text-base font-bold hover:bg-opacity-90 transition-opacity">
-                        Start Your Project
-                    </button>
+        <section className={`py-16 sm:py-24 ${isFullWidth === 'Yes' ? '' : 'max-w-6xl mx-auto'}`} style={{ backgroundColor: sectionBgColor }}>
+            <div className="max-w-4xl mx-auto px-4">
+                <div className="text-center">
+                    <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight" style={{ color: titleColor }}>
+                        {title}
+                    </h2>
+                    <p className="mt-4 max-w-2xl mx-auto text-lg" style={{ color: descriptionColor }}>
+                        {description}
+                    </p>
+                    {/* {haveButton && ( */}
+                        <div className="mt-8 flex justify-center">
+                            <button className={`flex items-center justify-center rounded-lg h-12 px-6 text-base font-bold hover:opacity-90 transition-opacity`} style={{ backgroundColor: button?.color, color: button?.textColor }}>
+                                {button?.text}
+                            </button>
+                        </div>
+                    {/* )} */}
                 </div>
             </div>
         </section>

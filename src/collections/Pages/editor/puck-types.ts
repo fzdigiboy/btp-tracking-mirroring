@@ -187,6 +187,25 @@ export type PuckProps = {
       }
     }>
   }
+
+  // CTA Block (4 Variants)
+  Custom4Blocks: {
+    variant: 'about' | 'home' | 'services' | 'testimonials'
+    title: string
+    titleColor: string
+    descriptionColor: string
+    description: string
+    backgroundColor: string
+    sectionBgColor: string
+    isFullWidth: string
+    button: {
+      text: string
+      href: string
+      color: string
+      textColor: string
+    }
+    // haveButton: string
+  }
   // TextBlock: {
   //   text: string
   //   align?: 'left' | 'center' | 'right'
