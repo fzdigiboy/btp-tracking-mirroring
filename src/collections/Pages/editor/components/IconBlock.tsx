@@ -22,7 +22,7 @@ const IconBlockComponent = ({
   if (!IconComponent) {
     return (
       <div style={{ textAlign: alignment, padding: '16px', color: '#9ca3af' }}>
-        Icon "{icon}" not found
+        Icon &quot;{icon}&quot; not found
       </div>
     )
   }

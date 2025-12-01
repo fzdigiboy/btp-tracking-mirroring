@@ -17,7 +17,7 @@ const getAllLucideIcons = (): string[] => {
     (key) =>
       key !== 'createLucideIcon' &&
       key !== 'default' &&
-      typeof (LucideIcons as any)[key] === 'function'
+      typeof (LucideIcons as any)[key] === 'function',
   )
 }
 
@@ -35,7 +35,7 @@ const ICON_CATEGORIES = {
     'Send', // Telegram style
     'Share2',
   ],
-  'Construction': [
+  Construction: [
     'Building',
     'Building2',
     'Hammer',
@@ -47,7 +47,7 @@ const ICON_CATEGORIES = {
     'Package',
     'Truck',
   ],
-  'Navigation': [
+  Navigation: [
     'Home',
     'MapPin',
     'Navigation',
@@ -59,7 +59,7 @@ const ICON_CATEGORIES = {
     'ChevronLeft',
     'Menu',
   ],
-  'Communication': [
+  Communication: [
     'Mail',
     'Phone',
     'MessageSquare',
@@ -70,7 +70,7 @@ const ICON_CATEGORIES = {
     'Video',
     'Mic',
   ],
-  'Interface': [
+  Interface: [
     'Search',
     'Settings',
     'User',
@@ -84,12 +84,7 @@ const ICON_CATEGORIES = {
   ],
 }
 
-export const IconPickerField = ({
-  label,
-  value,
-  onChange,
-  placeholder,
-}: IconPickerFieldProps) => {
+export const IconPickerField = ({ label, value, onChange, placeholder }: IconPickerFieldProps) => {
   const [showPicker, setShowPicker] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState<string>('Tous')
@@ -103,15 +98,16 @@ export const IconPickerField = ({
 
   // Filtrer les icônes selon la recherche et la catégorie
   const filteredIcons = useMemo(() => {
-    let icons = selectedCategory === 'Tous' ? allIcons : 
-                selectedCategory === 'Populaires' ? popularIcons :
-                ICON_CATEGORIES[selectedCategory as keyof typeof ICON_CATEGORIES] || []
+    let icons =
+      selectedCategory === 'Tous'
+        ? allIcons
+        : selectedCategory === 'Populaires'
+          ? popularIcons
+          : ICON_CATEGORIES[selectedCategory as keyof typeof ICON_CATEGORIES] || []
 
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase()
-      icons = allIcons.filter((icon) =>
-        icon.toLowerCase().includes(query)
-      )
+      icons = allIcons.filter((icon) => icon.toLowerCase().includes(query))
     }
 
     return icons
@@ -299,7 +295,7 @@ export const IconPickerField = ({
                 borderBottom: '1px solid #e5e7eb',
               }}
             >
-              {filteredIcons.length} icône(s) trouvée(s) pour "{searchQuery}"
+              {filteredIcons.length} icône(s) trouvée(s) pour &quot;{searchQuery}&quot;
             </div>
           )}
 
@@ -381,7 +377,7 @@ export const IconPickerField = ({
                 fontSize: '14px',
               }}
             >
-              Aucune icône trouvée pour "{searchQuery}"
+              Aucune icône trouvée pour &quot;{searchQuery}&quot;
             </div>
           )}
 

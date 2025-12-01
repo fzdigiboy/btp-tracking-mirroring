@@ -164,13 +164,13 @@ export function SearchDialog({ trigger }: SearchDialogProps) {
                     className="w-full mt-4"
                     onClick={() => handleSearch(query)}
                   >
-                    View all results for "{query}"
+                    View all results for &quot;{query}&quot;
                   </Button>
                 </div>
               ) : (
                 <div className="text-center py-8 text-muted-foreground">
                   <Search className="h-12 w-12 mx-auto mb-4 opacity-50" />
-                  <p>No products found for "{query}"</p>
+                  <p>No products found for &quot;{query}&quot;</p>
                 </div>
               )}
             </div>
