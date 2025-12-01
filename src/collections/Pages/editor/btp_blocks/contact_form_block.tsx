@@ -2,7 +2,7 @@ import ContactForm from '@/app/(storefront)/btp_components/Contact/component/Con
 import { ComponentConfig } from '@measured/puck'
 
 export interface ContactFormProps {
-  title: string
+  formTitle?: string
   button: {
     text: string
     href: string
@@ -14,7 +14,7 @@ export interface ContactFormProps {
 export const ContactFormBlock: ComponentConfig<ContactFormProps> = {
   label: 'Formulaire de contact',
   fields: {
-    title: { type: 'text', label: 'Titre' },
+    formTitle: { type: 'text', label: 'Titre' },
     button: {
       type: 'object',
       label: 'Button',
@@ -27,13 +27,13 @@ export const ContactFormBlock: ComponentConfig<ContactFormProps> = {
     },
   },
   defaultProps: {
-    title: 'Envoyez-nous un message',
+    formTitle: 'Envoyez-nous un message',
     button: {
       text: 'Envoyer un message',
       href: '#',
     },
   },
-  render: ({ title, button }) => {
-    return <ContactForm title={title} button={button} />
+  render: ({ formTitle, button }) => {
+    return <ContactForm formTitle={formTitle} button={button} />
   },
 }

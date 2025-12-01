@@ -5,7 +5,7 @@ import { createContact } from '@/lib/create-contact-db'
 import { getAllServices } from '@/lib/server.services'
 import { useEffect, useState } from 'react'
 
-export default function ContactForm({ title, button }: ContactFormProps) {
+export default function ContactForm({ formTitle, button }: ContactFormProps) {
   const [serviceData, setServices] = useState<any[]>([])
   const fetchServices = async () => {
     const data: any[] = await getAllServices({ limit: 10 })
@@ -62,7 +62,7 @@ export default function ContactForm({ title, button }: ContactFormProps) {
 
   return (
     <div className="lg:col-span-3 bg-card p-8 rounded-xl shadow-md border border-border">
-      <h3 className="text-2xl font-bold text-primary mb-6">{title}</h3>
+      <h3 className="text-2xl font-bold text-primary mb-6">{formTitle}</h3>
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {/* First Name */}

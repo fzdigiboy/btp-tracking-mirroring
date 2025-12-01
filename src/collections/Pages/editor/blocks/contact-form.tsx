@@ -24,15 +24,16 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title, submitButtonTex
 
   return (
     <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 md:p-10 border border-gray-200 dark:border-gray-700">
-      {title && (
-        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{title}</h3>
-      )}
+      {title && <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{title}</h3>}
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Row 1: Full Name & Email */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label
+              htmlFor="fullName"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+            >
               Full Name
             </label>
             <input
@@ -47,7 +48,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title, submitButtonTex
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+            >
               Email Address
             </label>
             <input
@@ -64,7 +68,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title, submitButtonTex
 
         {/* Subject */}
         <div>
-          <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label
+            htmlFor="subject"
+            className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+          >
             Subject
           </label>
           <input
@@ -80,7 +87,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title, submitButtonTex
 
         {/* Message */}
         <div>
-          <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label
+            htmlFor="message"
+            className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+          >
             Message
           </label>
           <textarea
