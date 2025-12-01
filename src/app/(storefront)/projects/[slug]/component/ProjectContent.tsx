@@ -1,13 +1,15 @@
 // import { RichText } from "@/collections/Pages/editor/components/RichText";
 // import { Render } from "@measured/puck";
 // import { RichText, RichTextProps } from "@/collections/Pages/editor/components/RichText";
-import { RichTextRenderer } from '@/collections/Pages/editor/components/RichTextRender'
+import { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical'
+
+import { RichText } from '@payloadcms/richtext-lexical/lexical'
 
 export default function ProjectContent({
   content,
   testimonies,
 }: {
-  content: string
+  content: SerializedEditorState
   testimonies: any
 }) {
   return (
@@ -28,7 +30,8 @@ export default function ProjectContent({
                     The architectural design also required integrating modern aesthetics with local climate considerations. Our team designed a layout that maximizes natural ventilation and light, reducing reliance on air conditioning while maintaining a comfortable indoor environment.
                 </p>
             </div> */}
-      <RichTextRenderer content={content} />
+      {/* <RichTextRenderer content={content} /> */}
+      <RichText data={content} />
 
       <div className="mt-12">
         <h3 className="text-2xl font-bold mb-4 text-foreground">Client Testimonial</h3>
@@ -40,13 +43,13 @@ export default function ProjectContent({
                         — Mr. & Mrs. Adjovi, Paris, France
                     </p>
                 </div> */}
-        {testimonies.length > 0 &&
-          testimonies.map((testimony: any, index: number) => (
+        {testimonies?.length > 0 &&
+          testimonies?.map((testimony: any, index: number) => (
             <div key={index} className="bg-card border-l-4 border-primary p-6 rounded-lg shadow-sm">
-              <p className="text-text-muted italic">
-                "{testimony.content}"
+              <p className="text-text-muted italic">"{testimony.content}"</p>
+              <p className="mt-4 font-bold text-foreground">
+                {testimony.name}, {testimony.country}
               </p>
-              <p className="mt-4 font-bold text-foreground">{testimony.name}, {testimony.country}</p>
             </div>
           ))}
       </div>
