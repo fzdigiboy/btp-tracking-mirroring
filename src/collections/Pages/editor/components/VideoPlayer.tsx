@@ -103,6 +103,7 @@ export const VideoPlayer: ComponentConfig<VideoPlayerProps> = {
       // @ts-ignore
       type: 'custom',
       render: ({ field, name, value, onChange }: any) => {
+        // eslint-disable-next-line @typescript-eslint/no-require-imports
         const MediaSelectField = require('../fields/media-select').MediaSelectField
         return (
           <MediaSelectField
