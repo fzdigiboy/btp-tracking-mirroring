@@ -10,30 +10,47 @@ import ProjectContent from './component/ProjectContent'
 import ProjectHeader from './component/ProjectHeader'
 import ProjectInfo from './component/ProjectInfo'
 
-export default async function ProjectDetails({ idQuery }: any) {
+export default async function ProjectDetails({params}: any) {
   const payload = await getPayloadClient()
 
-//   const resolved = await params
-//   const slug = resolved.slug
+  const resolved = await params
+  const idParam = resolved.slug
 
-  const project = await payload.findByID({
+  const project = await payload.find({
     collection: 'projects',
-    id: idQuery,
+    limit: 1,
     depth: 2,
+    pagination: false,
+    where: {
+      id: {
+        equals: idParam
+      }
+    }
   })
 
-  console.log('response', project)
+  const testimonies = await payload.find({
+    collection: 'testimonies',
+    limit: 50,          // nombre max de témoignages à récupérer
+    sort: '-createdAt',  // optionnel : plus récents en premier
+    where: {
+      project: {
+        equals: idParam, // filtre sur l'id du projet
+      },
+    },
+  })
+
+  console.log('response', testimonies)
 
   return (
     <div className="relative flex h-auto min-h-screen w-full flex-col">
       <div className="layout-container flex h-full grow flex-col">
         <Header />
         <main className="flex-1 p-4 sm:p-6 lg:p-8 px-4 md:px-8 lg:px-14">
-          <ProjectHeader />
-          <ImageGallery />
+          <ProjectHeader title={project.docs[0].title} location={project.docs[0].location} />
+          <ImageGallery images={project.docs[0].image} />
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            <ProjectContent />
-            <ProjectInfo />
+            <ProjectContent content={project.docs[0].content} testimonies={testimonies.docs}/>
+            <ProjectInfo duration={project.docs[0].projectInfo.duration} size={project.docs[0].projectInfo.size.value} unity={project.docs[0].projectInfo.size.unit} services={project.docs[0].projectInfo.services} />
           </div>
         </main>
         <Footer />

@@ -26,6 +26,7 @@ export const Projects: CollectionConfig = {
       required: true,
       hasMany: true,
       maxRows: 8,
+      // minRows: 2
     },
     {
       name: 'location',
