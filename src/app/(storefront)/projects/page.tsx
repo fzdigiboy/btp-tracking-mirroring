@@ -1,35 +1,49 @@
-"use client";
-import { getProjects } from '@/lib/server-actions/actions';
-import { useCallback, useEffect, useState } from 'react';
-import Footer from '../btp_preview/common_component/footer';
-import Header from '../btp_preview/common_component/header';
-import FiltersSidebar, { ProjectsFilters } from './component/FiltersSidebar';
-import Pagination from './component/Pagination';
-import ProjectCard from './component/ProjectCard';
-import ProjectsHeader from './component/ProjectsHeader';
+'use client'
+import { getProjects } from '@/lib/server-actions/actions'
+import { useCallback, useEffect, useState } from 'react'
+import Footer from '../btp_preview/common_component/footer'
+import Header from '../btp_preview/common_component/header'
+import FiltersSidebar, { ProjectsFilters } from './component/FiltersSidebar'
+import Pagination from './component/Pagination'
+import ProjectCard from './component/ProjectCard'
+import ProjectsHeader from './component/ProjectsHeader'
 
 type Project = {
-  id: string;
-  title: string;
-  location: string;
-  image: string;
-};
+  id: string
+  title: string
+  location: string
+  image: string
+}
 type ProjectResponseMeta = {
-  totalPages: number;
-  page: number;
-  hasPrevPage: boolean;
-  hasNextPage: boolean;
-};
+  totalPages: number
+  page: number
+  hasPrevPage: boolean
+  hasNextPage: boolean
+}
+function getFileType(urlOrPaths: string[]): string {
+  const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.bmp', '.svg']
+  // const videoExtensions = ['.mp4', '.webm', '.ogg', '.mov', '.avi', '.mkv', '.m3u8']
+
+  // const lowerPaths = urlOrPaths?.map(url => url?.toLowerCase());
+
+  for (const path of urlOrPaths) {
+    if (imageExtensions.some((ext) => path?.endsWith(ext))) {
+      return path
+    }
+  }
+  return 'https://plus.unsplash.com/premium_photo-1764435536930-c93558fa72c6?q=80&w=1223&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+}
+
 export default function Projects() {
-  const [projects, setProjects] = useState<Project[]>([]);
-const [activeFilters, setActiveFilters] = useState({ projectType: "", service: "" });
+  const [projects, setProjects] = useState<Project[]>([])
+  const [activeFilters, setActiveFilters] = useState({ projectType: '', service: '' })
 
   const [paginationMeta, setPaginationMeta] = useState<ProjectResponseMeta>({
     totalPages: 1,
     page: 1,
     hasPrevPage: false,
     hasNextPage: false,
-  });
+  })
 
   // const projectss = [
   //   {
@@ -70,50 +84,50 @@ const [activeFilters, setActiveFilters] = useState({ projectType: "", service: "
   //   },
   // ]
 
-  const fetchProjects = async ( projectType: string, service: string,page: number = 1) => {
+  const fetchProjects = async (projectType: string, service: string, page: number = 1) => {
     const response = await getProjects({
-      limit: 50,
+      limit: 10,
       page: page,
       filters: {
-        projectType:  projectType,
+        projectType: projectType,
         service: service,
       },
-    });
-    console.log(response);
-     if(response){
-       const data = response?.docs?.map((project: any) => ({
+    })
+    console.log(response)
+    if (response) {
+      const data = response?.docs?.map((project: any) => ({
         id: project?.id,
         title: project?.titre,
         location: project?.location,
-        image: project?.image?.[0]?.url,
-      }));
-      setProjects(data);
+        image: getFileType(project?.image?.map((img: any) => img?.url)),
+      }))
+      setProjects(data)
       setPaginationMeta({
-          totalPages: response.totalPages,
-          page: response.page || 1,
-          hasPrevPage: response.hasPrevPage,
-          hasNextPage: response.hasNextPage,
-        });
-      };
-  };
+        totalPages: response.totalPages,
+        page: response.page || 1,
+        hasPrevPage: response.hasPrevPage,
+        hasNextPage: response.hasNextPage,
+      })
+    }
+  }
 
- const handleFilterChange = useCallback((filters: ProjectsFilters) => {
-  setActiveFilters(filters);
-    console.log("Filtres reçus:", filters);
-       fetchProjects(filters.projectType, filters.service, 1); 
-  }, []); 
+  const handleFilterChange = useCallback((filters: ProjectsFilters) => {
+    setActiveFilters(filters)
+    console.log('Filtres reçus:', filters)
+    fetchProjects(filters.projectType, filters.service, 1)
+  }, [])
 
-
-
-  const handlePageChange = useCallback((page: number) => {
-    // Appliquer les filtres actifs lors du changement de page
-    fetchProjects(activeFilters.projectType, activeFilters.service, page); 
-  }, [activeFilters]); // Dépend des filtres actifs
-
+  const handlePageChange = useCallback(
+    (page: number) => {
+      // Appliquer les filtres actifs lors du changement de page
+      fetchProjects(activeFilters.projectType, activeFilters.service, page)
+    },
+    [activeFilters],
+  ) // Dépend des filtres actifs
 
   useEffect(() => {
-    fetchProjects("", "", 1);
-  }, []);
+    fetchProjects('', '', 1)
+  }, [])
 
   return (
     <div className="relative flex h-auto min-h-screen w-full flex-col">
@@ -124,19 +138,20 @@ const [activeFilters, setActiveFilters] = useState({ projectType: "", service: "
           <div className="flex flex-col gap-8 lg:flex-row">
             <FiltersSidebar onFilterChange={handleFilterChange} />
             <div className="w-full lg:w-3/4 xl:w-4/5">
-              {
-                projects.length > 0 ?
+              {projects.length > 0 ? (
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
-                {projects?.map((project, index) => (
-                  <ProjectCard key={index} {...project} />
-                ))}
-              </div>
-              :
-              <div className="flex flex-col items-center justify-center h-full">
-                <h1 className="text-2xl font-bold text-center">Aucun projet trouvé</h1>
-                <p className="text-center">Essayez de modifier les filtres ou de changer de page</p>
-              </div>
-              }
+                  {projects?.map((project, index) => (
+                    <ProjectCard key={index} {...project} />
+                  ))}
+                </div>
+              ) : (
+                <div className="flex flex-col items-center justify-center h-full">
+                  <h1 className="text-2xl font-bold text-center">Aucun projet trouvé</h1>
+                  <p className="text-center">
+                    Essayez de modifier les filtres ou de changer de page
+                  </p>
+                </div>
+              )}
               <Pagination
                 currentPage={paginationMeta.page}
                 totalPages={paginationMeta.totalPages}

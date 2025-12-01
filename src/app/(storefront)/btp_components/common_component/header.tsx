@@ -42,8 +42,10 @@ export default function Header({ logo, navLinks, raqButton }: any) {
           <nav className="flex items-center gap-6">
             {navLinks?.map((link: any, index: number) => {
               const href = link?.internalPage?.slug
-                ? `/${link?.internalPage?.slug}`
-                : link?.externalUrl || '#'
+                ? `/${link.internalPage.slug}`
+                : link?.externalUrl?.startsWith('http')
+                  ? link.externalUrl
+                  : `https://${link.externalUrl}`
               return (
                 <Link
                   key={index}
