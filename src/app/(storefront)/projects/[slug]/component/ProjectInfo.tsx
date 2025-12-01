@@ -1,5 +1,5 @@
-export default function ProjectInfo() {
-    const services = ["Architecture", "Construction", "Turnkey"];
+export default function ProjectInfo({duration, size, unity, services}: any) {
+    // const services = ["Architecture", "Construction", "Turnkey"];
 
     return (
         <div className="lg:col-span-1">
@@ -11,21 +11,23 @@ export default function ProjectInfo() {
                     <div className="space-y-4">
                         <div className="flex justify-between items-center">
                             <span className="font-semibold text-text-muted">Duration:</span>
-                            <span className="font-bold text-foreground">14 Months</span>
+                            {/* <span className="font-bold text-foreground">14 Months</span> */}
+                            <span className="font-bold text-foreground">{duration}</span>
                         </div>
                         <div className="flex justify-between items-center">
                             <span className="font-semibold text-text-muted">Size:</span>
-                            <span className="font-bold text-foreground">450 m²</span>
+                            {/* <span className="font-bold text-foreground">450 m²</span> */}
+                             <span className="font-bold text-foreground">{size} {unity}</span>
                         </div>
                         <div className="flex justify-between items-center">
                             <span className="font-semibold text-text-muted">Services:</span>
                             <div className="flex flex-wrap justify-end gap-2">
-                                {services.map((service, index) => (
+                                {services?.map((service:any, index:number) => (
                                     <span
                                         key={index}
                                         className="bg-primary/10 text-primary text-xs font-semibold px-2.5 py-1 rounded-full"
                                     >
-                                        {service}
+                                        {service.titre}
                                     </span>
                                 ))}
                             </div>
