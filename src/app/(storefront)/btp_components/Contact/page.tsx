@@ -4,8 +4,21 @@ import ContactHeader from './component/ContactHeader'
 import ContactForm from './component/ContactForm'
 import ContactInfo from './component/ContactInfo'
 import { TitleDescriptionProps } from '@/collections/Pages/editor/btp_blocks/title_description'
+import { ContactInfoProps } from '@/collections/Pages/editor/btp_blocks/contact_info'
+import { ContactFormProps } from '@/collections/Pages/editor/btp_blocks/contact_form_block'
 
-export default function Contact({ title, description, isFullWidth }: TitleDescriptionProps) {
+export default function Contact({
+  title,
+  description,
+  isFullWidth,
+  button,
+  formTitle,
+  address,
+  phones,
+  email,
+  mapUrl,
+  socials,
+}: TitleDescriptionProps & ContactFormProps & ContactInfoProps) {
   return (
     <div className="relative flex min-h-screen w-full flex-col">
       <div className="layout-container flex h-full grow flex-col">
@@ -14,8 +27,15 @@ export default function Contact({ title, description, isFullWidth }: TitleDescri
           <div>
             <ContactHeader title={title} description={description} isFullWidth={isFullWidth} />
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
-              <ContactForm />
-              <ContactInfo />
+              {/* TODO: Passer les composants ici */}
+              <ContactForm formTitle={formTitle} button={button} />
+              <ContactInfo
+                address={address}
+                email={email}
+                mapUrl={mapUrl}
+                phones={phones}
+                socials={socials}
+              />
             </div>
           </div>
         </main>

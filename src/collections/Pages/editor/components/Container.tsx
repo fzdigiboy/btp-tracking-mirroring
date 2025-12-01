@@ -3,9 +3,9 @@ import React from 'react'
 import { colorPickerField } from '../fields/color-picker'
 import { imagePickerField } from '../fields/image-picker'
 import { spacingField } from '../fields/spacing-field'
-import { shadowPickerField } from '../fields/shadow-picker'
-import { borderRadiusField } from '../fields/border-radius'
-import { gradientPickerField } from '../fields/gradient-picker'
+// import { shadowPickerField } from '../fields/shadow-picker'
+// import { borderRadiusField } from '../fields/border-radius'
+// import { gradientPickerField } from '../fields/gradient-picker'
 
 export interface ContainerProps {
   preset?: 'custom' | 'site-settings'
@@ -151,7 +151,7 @@ export const Container: ComponentConfig<ContainerProps> = {
       label: 'Background',
       objectFields: {
         color: colorPickerField,
-        gradient: gradientPickerField,
+        // gradient: gradientPickerField,
         image: {
           // @ts-ignore
           type: 'custom',
@@ -206,7 +206,7 @@ export const Container: ComponentConfig<ContainerProps> = {
         },
         width: { type: 'text', label: 'Width' },
         color: colorPickerField,
-        radius: borderRadiusField,
+        // radius: borderRadiusField,
       },
     },
 

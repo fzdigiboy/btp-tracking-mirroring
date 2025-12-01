@@ -1,4 +1,3 @@
-import { getSiteSettings } from '@/lib/get-site-settings'
 import type { ReactNode } from 'react'
 
 interface ContainerProps {
@@ -24,30 +23,9 @@ export async function Container({
   as: Component = 'div',
   variant = 'default',
 }: ContainerProps) {
-  const settings = await getSiteSettings()
-
   const baseClasses = variant === 'section' ? 'site-section' : 'site-container'
 
-  return (
-    <Component
-      className={`${baseClasses} ${className}`}
-      style={{
-        maxWidth: settings.containerMaxWidth || 1280,
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        paddingLeft: settings.containerPadding || 16,
-        paddingRight: settings.containerPadding || 16,
-        ...(variant === 'section' && {
-          marginTop: settings.sectionSpacingY || 80,
-          marginBottom: settings.sectionSpacingY || 80,
-          paddingLeft: settings.sectionSpacingX || 0,
-          paddingRight: settings.sectionSpacingX || 0,
-        }),
-      }}
-    >
-      {children}
-    </Component>
-  )
+  return <Component className={`${baseClasses} ${className}`}>{children}</Component>
 }
 
 /**
@@ -62,9 +40,5 @@ export function ContainerClient({
 }: ContainerProps) {
   const baseClasses = variant === 'section' ? 'site-section' : 'site-container'
 
-  return (
-    <Component className={`${baseClasses} ${className}`}>
-      {children}
-    </Component>
-  )
+  return <Component className={`${baseClasses} ${className}`}>{children}</Component>
 }

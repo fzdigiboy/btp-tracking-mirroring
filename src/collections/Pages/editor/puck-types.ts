@@ -1,7 +1,9 @@
 // import { Product } from "@/lib/products";
 
 import { ContactFormProps } from './btp_blocks/contact_form_block'
+import { ContactInfoProps } from './btp_blocks/contact_info'
 import { TitleDescriptionProps } from './btp_blocks/title_description'
+import { GridProps } from './components/Grid'
 
 // Déclarer les blocs avec leur attributs
 export type PuckProps = {
@@ -167,7 +169,6 @@ export type PuckProps = {
         alt: string
       }
     }>
-    // TODO: A mettre dans chaque bloc
     isFullWidth: string
   }
 
@@ -216,7 +217,7 @@ export type PuckProps = {
     title: string
     isFullWidth: string
   }
-  
+
   HeadingBlock: {
     title: string
     description: string
@@ -238,16 +239,18 @@ export type PuckProps = {
       subTitle: string
     }
     images: Array<{
-      image:string
+      image: string
     }>
     isFullWidth: string
   }
-  
+
   ServiceListBlock: {
     title: string
     isFullWidth: string
-    limit: number  
+    limit: number
   }
+
+  ContactInfoBlock: ContactInfoProps
   // TextBlock: {
   //   text: string
   //   align?: 'left' | 'center' | 'right'
@@ -419,14 +422,13 @@ export type PuckProps = {
   //   }
   //   className?: string
   // }
-
   // IconBlock: IconBlockProps
   // VideoBlock: VideoBlockProps
   // RichText: RichTextProps
   // Accordion: {
   //   items: { title: string }[]
   // }
-  // Grid: GridProps
+  Grid: GridProps
   // Alert: {
   //   title: string
   //   variant: 'info' | 'success' | 'warning' | 'error'

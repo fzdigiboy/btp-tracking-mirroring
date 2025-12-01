@@ -9,6 +9,7 @@ import { NumberBlock } from './btp_blocks/hp-number'
 import { PartnersBlock } from './btp_blocks/hp-trusted_block'
 import { ServiceBlock4 } from './btp_blocks/service-block-4'
 import { ServiceListBlock } from './btp_blocks/service-blocks'
+import { Grid } from './components/Grid'
 import { PuckProps } from './puck-types'
 // ========================================
 // PORTFOLIO DESIGN BLOCKS (blo_portfolio)
@@ -25,6 +26,7 @@ import { ImageGalleryBlock } from './btp_blocks/mediaPlayers'
 import { ServicesBlock1 } from './btp_blocks/services-block1'
 import { TestimoniesSectionBlock } from './btp_blocks/testimonials'
 import { TitleDescriptionBlock } from './btp_blocks/title_description'
+import { ContactInfoBlock } from './btp_blocks/contact_info'
 
 export const config: Config<PuckProps> = {
   root: {
@@ -52,7 +54,7 @@ export const config: Config<PuckProps> = {
     // ===== LAYOUT =====
     layout: {
       title: '🏗️ Layout & Structure',
-      components: ['FooterBlocks', 'HeaderBlock','HeadingBlock'], // Header et Footer (les blocks)
+      components: ['FooterBlocks', 'HeaderBlock', 'HeadingBlock'], // Header et Footer (les blocks)
     },
 
     // ===== HOMEPAGE =====
@@ -83,7 +85,7 @@ export const config: Config<PuckProps> = {
     // ===== Services =====
     services: {
       title: '📝 Services',
-      components: ['ServiceBlock4',"ServicesBlock1","ServiceListBlock"],
+      components: ['ServiceBlock4', 'ServicesBlock1', 'ServiceListBlock'],
     },
 
     // ===== Projects =====²
@@ -101,13 +103,19 @@ export const config: Config<PuckProps> = {
     // ===== Testimonials =====
     testimonials: {
       title: '📄 Testimonials',
-      components: ['TestimoniesSectionBlock','HeadingBlock', 'ImageGalleryBlock'],
+      components: ['TestimoniesSectionBlock', 'HeadingBlock', 'ImageGalleryBlock'],
     },
 
     // ===== Contact =====
     contact: {
       title: '📄 Contact',
-      components: ['TitleDescriptionBlock', 'ContactFormBlock'],
+      components: [
+        'TitleDescriptionBlock',
+        'Grid',
+        'ContactFormBlock',
+        'ContactInfoBlock',
+        'HeadingBlock',
+      ],
     },
   },
 
@@ -140,10 +148,12 @@ export const config: Config<PuckProps> = {
     // ===== Projects =====
     // ===== Project Details =====
     // ===== Testimonials =====
-        HeadingBlock,
+    HeadingBlock,
     ImageGalleryBlock,
     // ===== Contact =====
     TitleDescriptionBlock,
+    Grid,
     ContactFormBlock,
+    ContactInfoBlock,
   },
 }
