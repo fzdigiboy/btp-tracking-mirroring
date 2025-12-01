@@ -1,5 +1,6 @@
 // storage-adapter-import-placeholder
 import { sqliteAdapter } from '@payloadcms/db-sqlite' // database-adapter-import
+import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres'
 import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
@@ -20,6 +21,8 @@ import { Projects } from './collections/Projects'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
+const isProd = process.env.NODE_ENV === 'production'
+
 export default buildConfig({
   routes: {
     admin: '/admin',
@@ -38,11 +41,18 @@ export default buildConfig({
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
   // database-adapter-config-start
-  db: sqliteAdapter({
-    client: {
-      url: process.env.DATABASE_URI || 'file:./payload.db',
-    },
-  }),
+  db: isProd
+    ? vercelPostgresAdapter({
+        pool: {
+          connectionString: process.env.POSTGRES_URL,
+        },
+        schemaName: 'btp_tracking_app',
+      })
+    : sqliteAdapter({
+        client: {
+          url: process.env.DATABASE_URI || 'file:./payload.db',
+        },
+      }),
   // database-adapter-config-end
   sharp,
   plugins: [

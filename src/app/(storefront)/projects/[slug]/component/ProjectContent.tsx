@@ -3,7 +3,7 @@
 // import { RichText, RichTextProps } from "@/collections/Pages/editor/components/RichText";
 import { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical'
 
-import { RichText } from '@payloadcms/richtext-lexical/lexical'
+import { RichText } from '@payloadcms/richtext-lexical/react'
 
 export default function ProjectContent({
   content,

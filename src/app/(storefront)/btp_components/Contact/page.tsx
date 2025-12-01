@@ -3,9 +3,9 @@ import Footer from '../common_component/footer'
 import ContactHeader from './component/ContactHeader'
 import ContactForm from './component/ContactForm'
 import ContactInfo from './component/ContactInfo'
-import { TitleDescriptionProps } from '@/collections/Pages/editor/btp_blocks/title_description'
-import { ContactInfoProps } from '@/collections/Pages/editor/btp_blocks/contact_info'
-import { ContactFormProps } from '@/collections/Pages/editor/btp_blocks/contact_form_block'
+import { type TitleDescriptionProps } from '@/collections/Pages/editor/btp_blocks/title_description'
+import { type ContactInfoProps } from '@/collections/Pages/editor/btp_blocks/contact_info'
+import { type ContactFormProps } from '@/collections/Pages/editor/btp_blocks/contact_form_block'
 
 export default function Contact({
   title,

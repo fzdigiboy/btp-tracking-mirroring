@@ -1,5 +1,4 @@
 export default function TestimonialsSection({ title, testimonies, isFullWidth }: any) {
-
   return (
     <section className={`py-16 sm:py-24 ${isFullWidth === 'No' ? 'custom_container' : ''}`}>
       <div className="max-w-4xl mx-auto px-4 text-center">
@@ -14,7 +13,7 @@ export default function TestimonialsSection({ title, testimonies, isFullWidth }:
                 {/* "Building my family home in Togo from Canada seemed impossible until I found
                 TogoBuild. Their professionalism, constant updates, and transparency were
                 exceptional. They delivered beyond my expectations." */}
-                "{testimony.message}"
+                &quot;{testimony.message}&quot;
               </p>
               <div className="mt-6 flex items-center justify-center gap-4">
                 <img
