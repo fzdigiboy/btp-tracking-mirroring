@@ -1,51 +1,51 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
-import { useAuth } from "@/contexts/auth-context";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Card } from "@/components/ui/card";
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
+import { useAuth } from '@/contexts/auth-context'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Card } from '@/components/ui/card'
 
 export default function LoginPage() {
-  const router = useRouter();
-  const { login, user } = useAuth();
+  const router = useRouter()
+  const { login, user } = useAuth()
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+    email: '',
+    password: '',
+  })
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
 
   if (user) {
-    router.push("/account");
-    return null;
+    router.push('/account')
+    return null
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
+    e.preventDefault()
+    setLoading(true)
+    setError('')
 
-    const result = await login(formData.email, formData.password);
+    const result = await login(formData.email, formData.password)
 
     if (result.success) {
-      router.push("/account");
+      router.push('/account')
     } else {
-      setError(result.error || "Login failed");
+      setError(result.error || 'Login failed')
     }
 
-    setLoading(false);
-  };
+    setLoading(false)
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
-    }));
-  };
+    }))
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -93,19 +93,18 @@ export default function LoginPage() {
           </div>
 
           <div>
-            <Button
-              type="submit"
-              disabled={loading}
-              className="w-full"
-            >
-              {loading ? "Signing in..." : "Sign in"}
+            <Button type="submit" disabled={loading} className="w-full">
+              {loading ? 'Signing in...' : 'Sign in'}
             </Button>
           </div>
 
           <div className="text-center">
             <p className="text-sm text-gray-600">
-              Don&apos;t have an account?{" "}
-              <Link href="/account/register" className="font-medium text-primary hover:text-primary/80">
+              Don&apos;t have an account?{' '}
+              <Link
+                href="/account/register"
+                className="font-medium text-primary hover:text-primary/80"
+              >
                 Sign up
               </Link>
             </p>
@@ -113,5 +112,5 @@ export default function LoginPage() {
         </form>
       </Card>
     </div>
-  );
+  )
 }
