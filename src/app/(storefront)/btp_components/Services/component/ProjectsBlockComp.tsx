@@ -1,5 +1,5 @@
 "use client"
-import { getServices } from "@/lib/server-actions/services";
+import { getServices } from "@/lib/server-actions/actions";
 import { useEffect, useState } from "react";
 import ServiceCard from "./ServiceCard";
 import StickyNav from "./StickyNav";

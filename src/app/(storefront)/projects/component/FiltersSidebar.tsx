@@ -1,6 +1,6 @@
 "use client";
 
-import { getProjects, getServices } from "@/lib/server-actions/services";
+import { getProjectsType, getServices } from "@/lib/server-actions/actions";
 import { useEffect, useState } from "react";
 
 type ProjectType = {
@@ -13,7 +13,14 @@ type Service = {
   id: string;
 };
 
-export default function FiltersSidebar() {
+export type ProjectsFilters = {
+  projectType: string;
+  service: string;
+};
+type FiltersSidebarProps = {
+  onFilterChange: (filters: ProjectsFilters) => void;
+};
+export default function FiltersSidebar({ onFilterChange }: FiltersSidebarProps) {
   const [projectTypes, setProjectTypes] = useState<ProjectType[]>([]);
   const [services, setServices] = useState<Service[]>([]);
   
@@ -22,12 +29,13 @@ export default function FiltersSidebar() {
   const [selectedService, setSelectedService] = useState<string>("");
 
   const fetchDatas = async () => {
-    const Pdata = await getProjects({ limit: 50 });
+    const Pdata = await getProjectsType({ limit: 50 });
+    console.log(Pdata);
     const Sdata = await getServices({ limit: 50 });
 
     const projectTypes: ProjectType[] = Pdata.map((project: any) => ({
       title: project?.titre,
-      id: project?.handle,
+      id: project?.id,
     }));
     
     const services: Service[] = Sdata.map((service: any) => ({
@@ -67,6 +75,15 @@ export default function FiltersSidebar() {
     fetchDatas();
   }, []);
 
+
+useEffect(() => {
+  onFilterChange({
+    projectType: selectedProjectType,
+    service: selectedService,
+  });
+}, [selectedProjectType, selectedService, onFilterChange]);
+
+
   return (
     <aside className="w-full lg:w-1/4 xl:w-1/5">
       <div className="sticky top-24 rounded-xl border border-border bg-card p-6">
@@ -81,25 +98,25 @@ export default function FiltersSidebar() {
             )}
           </h4>
           <div className="flex flex-col gap-3">
-            {projectTypes.map((projectType) => (
+            {projectTypes.map((projectType, index) => (
               <label
-                key={projectType.id}
+                key={projectType?.id || `project-${index}`}
                 className="flex items-center gap-3 cursor-pointer text-sm hover:bg-muted/50 p-2 rounded transition-colors"
               >
                 <input
                   type="radio"
                   name="projectType"
-                  value={projectType.id}
-                  checked={selectedProjectType === projectType.id}
-                  onChange={() => handleProjectTypeChange(projectType.id)}
-                  className="h-5 w-5 border-border text-primary focus:ring-primary bg-background cursor-pointer"
+                  value={projectType?.id}
+                  checked={selectedProjectType === projectType?.id}
+                  onChange={() => handleProjectTypeChange(projectType?.id)}
+                  className="h-5 w-5 border-border text-primary focus:ring-primary bg-background cursor-pointer rounded"
                 />
                 <span className={`${
-                  selectedProjectType === projectType.id 
+                  selectedProjectType === projectType?.id 
                     ? "text-foreground font-medium" 
                     : "text-text-muted"
                 }`}>
-                  {projectType.title}
+                  {projectType?.title}
                 </span>
               </label>
             ))}
@@ -115,25 +132,25 @@ export default function FiltersSidebar() {
             )}
           </h4>
           <div className="flex flex-col gap-3">
-            {services.map((service) => (
+            {services.map((service, index) => (
               <label
-                key={service.id}
+                key={service?.id || `service-${index}`}
                 className="flex items-center gap-3 cursor-pointer text-sm hover:bg-muted/50 p-2 rounded transition-colors"
               >
                 <input
                   type="radio"
                   name="service"
-                  value={service.id}
-                  checked={selectedService === service.id}
-                  onChange={() => handleServiceChange(service.id)}
-                  className="h-5 w-5 border-border text-primary focus:ring-primary bg-background cursor-pointer"
+                  value={service?.id}
+                  checked={selectedService === service?.id}
+                  onChange={() => handleServiceChange(service?.id)}
+                  className="h-5 w-5 border-border text-primary focus:ring-primary bg-background cursor-pointer rounded"
                 />
                 <span className={`${
-                  selectedService === service.id 
+                  selectedService === service?.id 
                     ? "text-foreground font-medium" 
                     : "text-text-muted"
                 }`}>
-                  {service.title}
+                  {service?.title}
                 </span>
               </label>
             ))}
