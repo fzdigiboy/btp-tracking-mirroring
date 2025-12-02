@@ -1,4 +1,5 @@
 import type { ComponentConfig } from '@measured/puck'
+import Link from 'next/link'
 import React from 'react'
 
 export type NavigationItem = {
@@ -28,7 +29,7 @@ export const Header: React.FC<HeaderProps> = ({
     <header className="sticky top-0 z-50 flex items-center justify-center border-b border-subtle-light dark:border-subtle-dark bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm px-4">
       <div className="flex h-16 w-full max-w-6xl items-center justify-between">
         {/* Logo Section */}
-        <a className="flex items-center gap-3" href="/">
+        <Link className="flex items-center gap-3" href="/">
           <div className="size-6 text-primary dark:text-accent">
             {logoIcon ? (
               <div dangerouslySetInnerHTML={{ __html: logoIcon }} />
@@ -57,7 +58,7 @@ export const Header: React.FC<HeaderProps> = ({
           <h2 className="font-serif text-xl font-bold text-text-light dark:text-text-dark">
             {logoText}
           </h2>
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-8 md:flex">

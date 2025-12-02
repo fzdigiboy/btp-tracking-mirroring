@@ -156,6 +156,7 @@ export const Container: ComponentConfig<ContainerProps> = {
           // @ts-ignore
           type: 'custom',
           render: ({ field, name, value, onChange }: any) => {
+            // eslint-disable-next-line @typescript-eslint/no-require-imports
             const ImagePickerField = require('../components/ImagePickerField').ImagePickerField
             return (
               <ImagePickerField

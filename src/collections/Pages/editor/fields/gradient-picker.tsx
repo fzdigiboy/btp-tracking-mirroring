@@ -361,6 +361,7 @@ export const GradientPickerField = ({ label, value, onChange }: GradientPickerFi
 }
 
 export const gradientPickerField: ExternalField<string> = {
+  // @ts-ignore
   type: 'custom',
   render: ({ field, name, value, onChange }: any) => {
     return (

@@ -79,19 +79,19 @@ export function generatePageMetadata({
 
   if (pageConfig) {
     // Handle title templates
-    if (pageConfig.titleTemplate && title) {
+    if ('titleTemplate' in pageConfig && title) {
       metaTitle = pageConfig.titleTemplate.replace('%s', title)
     } else if ('title' in pageConfig) {
       metaTitle = pageConfig.title
     }
 
     // Handle description templates
-    if (pageConfig.descriptionTemplate && templateData.length > 0) {
+    if ('descriptionTemplate' in pageConfig && templateData.length > 0) {
       metaDescription = pageConfig.descriptionTemplate
-      templateData.forEach((data, index) => {
+      templateData.forEach((data) => {
         metaDescription = metaDescription?.replace('%s', data) || metaDescription
       })
-    } else if (pageConfig.description && !description) {
+    } else if ('description' in pageConfig && !description) {
       metaDescription = pageConfig.description
     }
   }

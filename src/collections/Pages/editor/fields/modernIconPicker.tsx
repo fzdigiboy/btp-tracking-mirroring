@@ -440,6 +440,7 @@ export const EmojiIconPickerField = ({
 }
 
 export const ModernEmojiIconPickerField: ExternalField<string> = {
+  // @ts-ignore
   type: 'custom',
   render: ({ name, value, onChange }: any) => {
     return (

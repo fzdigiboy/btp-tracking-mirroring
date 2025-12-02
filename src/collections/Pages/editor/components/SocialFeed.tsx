@@ -107,7 +107,7 @@ export const SocialFeed: ComponentConfig<SocialFeedProps> = {
         author: { type: 'text', label: 'Author' },
         date: { type: 'text', label: 'Date' },
       },
-      getItemSummary: (item, index) => item.author || `Post ${index + 1}`,
+      getItemSummary: (item, index) => item.author || `Post ${(index || 0) + 1}`,
     },
     columns: {
       type: 'select',

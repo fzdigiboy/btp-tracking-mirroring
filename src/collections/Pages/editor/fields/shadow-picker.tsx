@@ -341,6 +341,7 @@ export const ShadowPickerField = ({ label, value, onChange }: ShadowPickerFieldP
 }
 
 export const shadowPickerField: ExternalField<string> = {
+  // @ts-ignore
   type: 'custom',
   render: ({ field, name, value, onChange }: any) => {
     return (

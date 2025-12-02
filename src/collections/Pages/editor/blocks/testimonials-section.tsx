@@ -38,7 +38,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
             key={index}
             className="flex flex-col justify-between rounded-xl border border-subtle-light dark:border-subtle-dark bg-background-light dark:bg-background-dark p-6 shadow-sm"
           >
-            <blockquote className="text-base">"{testimonial.quote}"</blockquote>
+            <blockquote className="text-base">&quot;{testimonial.quote}&quot;</blockquote>
             <div className="mt-4 flex items-center gap-4">
               {testimonial.authorImage && (
                 <div className="size-12 rounded-full relative overflow-hidden">

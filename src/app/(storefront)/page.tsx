@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return generatePageMetadata({
     pageKey: 'home',
     title: page?.title,
-    description: page?.description!,
+    description: page?.description,
     url: seoConfig.siteUrl,
   })
 }

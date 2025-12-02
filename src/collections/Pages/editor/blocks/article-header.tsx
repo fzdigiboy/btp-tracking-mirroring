@@ -2,6 +2,7 @@ import type { ComponentConfig } from '@measured/puck'
 import React from 'react'
 import Image from 'next/image'
 import { ImagePickerField } from '../components/ImagePickerField'
+import Link from 'next/link'
 
 export type ArticleHeaderProps = {
   category: string
@@ -30,17 +31,17 @@ export const ArticleHeader: React.FC<ArticleHeaderProps> = ({
       {/* Breadcrumb & Category */}
       <div className="mb-6">
         <nav className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-4">
-          <a href="/" className="hover:text-blue-600 dark:hover:text-blue-400">
+          <Link href="/" className="hover:text-blue-600 dark:hover:text-blue-400">
             Home
-          </a>
+          </Link>
           <span>/</span>
-          <a href="/blog" className="hover:text-blue-600 dark:hover:text-blue-400">
+          <Link href="/blog" className="hover:text-blue-600 dark:hover:text-blue-400">
             Blog
-          </a>
+          </Link>
           <span>/</span>
-          <a href="#" className="hover:text-blue-600 dark:hover:text-blue-400">
+          <Link href="#" className="hover:text-blue-600 dark:hover:text-blue-400">
             {category}
-          </a>
+          </Link>
         </nav>
 
         <span className="inline-block px-3 py-1.5 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-sm font-semibold uppercase tracking-wide">

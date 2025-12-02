@@ -1,4 +1,5 @@
 import type { ComponentConfig } from '@measured/puck'
+import Link from 'next/link'
 import React from 'react'
 
 export type FooterLink = {
@@ -138,7 +139,7 @@ export const Footer: React.FC<FooterProps> = ({
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           {/* Logo and Description */}
           <div className="md:col-span-2">
-            <a className="flex items-center gap-3" href="/">
+            <Link className="flex items-center gap-3" href="/">
               <div className="size-6 text-primary dark:text-accent">
                 {logoIcon ? (
                   <div dangerouslySetInnerHTML={{ __html: logoIcon }} />
@@ -158,7 +159,7 @@ export const Footer: React.FC<FooterProps> = ({
               <h2 className="font-serif text-xl font-bold text-text-light dark:text-text-dark">
                 {logoText}
               </h2>
-            </a>
+            </Link>
             {description && (
               <p className="mt-4 text-sm text-subtext-light dark:text-subtext-dark">
                 {description}

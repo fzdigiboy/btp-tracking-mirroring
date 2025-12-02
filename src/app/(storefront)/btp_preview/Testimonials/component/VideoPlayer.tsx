@@ -100,7 +100,7 @@ function MediaPlayer({ url, index }: { url: string; index: number }) {
           </svg>
           <p className="text-white text-lg font-medium">Impossible de charger le média</p>
           <p className="text-gray-400 text-sm text-center max-w-md">
-            Le fichier n'a pas pu être chargé. Vérifiez l'URL ou le format du fichier.
+            Le fichier n&apos;a pas pu être chargé. Vérifiez l&apos;URL ou le format du fichier.
           </p>
         </div>
       )}

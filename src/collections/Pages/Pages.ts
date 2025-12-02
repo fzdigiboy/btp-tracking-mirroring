@@ -28,6 +28,8 @@ export const Pages: CollectionConfig = {
         {
           name: 'description',
           type: 'textarea',
+          required: true,
+          defaultValue: 'Page description',
         },
         {
           name: 'handle',
