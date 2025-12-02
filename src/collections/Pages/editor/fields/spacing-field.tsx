@@ -231,6 +231,7 @@ export const SpacingField = ({ label, value, onChange }: SpacingFieldProps) => {
 }
 
 export const spacingField: ExternalField<SpacingValue> = {
+  // @ts-ignore
   type: 'custom',
   render: ({ field, name, value, onChange }: any) => {
     return (

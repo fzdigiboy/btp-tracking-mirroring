@@ -10,9 +10,7 @@ export interface ColorPickerFieldProps {
   onChange: (value: string) => void
 }
 
-export const ColorPickerField: CustomField<string> = {
-  type: 'custom',
-  render: ({ field, name, value, onChange }: ColorPickerFieldProps) => {
+function ColorPickerFieldRender({ field, name, value, onChange }: ColorPickerFieldProps) {
     const [showPicker, setShowPicker] = useState(false)
     const [tempColor, setTempColor] = useState(value || '#000000')
 
@@ -133,5 +131,9 @@ export const ColorPickerField: CustomField<string> = {
         )}
       </div>
     )
-  },
+  }
+
+export const ColorPickerField: CustomField<string> = {
+  type: 'custom',
+  render: ColorPickerFieldRender,
 }

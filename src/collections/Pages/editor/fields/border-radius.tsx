@@ -323,6 +323,7 @@ export const BorderRadiusField = ({ label, value, onChange }: BorderRadiusFieldP
 }
 
 export const borderRadiusField: ExternalField<BorderRadiusValue | string> = {
+  // @ts-ignore
   type: 'custom',
   render: ({ field, name, value, onChange }: any) => {
     return (

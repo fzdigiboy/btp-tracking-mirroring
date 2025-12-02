@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "🔍 Vérification ESLint..."
+# Exécuter lint-staged pour vérifier les erreurs ESLint sur les fichiers modifiés
+pnpm exec lint-staged
+
+echo "🏗️  Vérification du build..."
+# Vérifier que le projet compile correctement
+pnpm run build
+
+pnpm exec tsc --noEmit

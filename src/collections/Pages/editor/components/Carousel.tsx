@@ -197,6 +197,7 @@ export const Carousel: ComponentConfig<CarouselProps> = {
           // @ts-ignore
           type: 'custom',
           render: ({ field, name, value, onChange }: any) => {
+            // eslint-disable-next-line @typescript-eslint/no-require-imports
             const ImagePickerField = require('../components/ImagePickerField').ImagePickerField
             return (
               <ImagePickerField
@@ -211,7 +212,7 @@ export const Carousel: ComponentConfig<CarouselProps> = {
 
         caption: { type: 'text', label: 'Caption (optional)' },
       },
-      getItemSummary: (item, index) => item.caption || `Slide ${index + 1}`,
+      getItemSummary: (item, index) => item.caption || `Slide ${(index || 0) + 1}`,
     },
     autoPlay: {
       type: 'radio',

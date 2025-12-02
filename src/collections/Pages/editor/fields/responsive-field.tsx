@@ -159,6 +159,7 @@ export const ResponsiveField = ({ label, value, onChange, placeholder }: Respons
 }
 
 export const responsiveField: ExternalField<ResponsiveValue> = {
+  // @ts-ignore
   type: 'custom',
   render: ({ field, name, value, onChange }: any) => {
     return (

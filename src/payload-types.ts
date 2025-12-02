@@ -204,7 +204,7 @@ export interface Media {
 export interface Page {
   id: number;
   title: string;
-  description?: string | null;
+  description: string;
   handle: string;
   page:
     | {

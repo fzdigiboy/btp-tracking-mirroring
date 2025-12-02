@@ -329,6 +329,7 @@ export const IconPickerField = ({ label, value, onChange }: IconPickerFieldProps
 }
 
 export const iconPickerField: ExternalField<string> = {
+  // @ts-ignore
   type: 'custom',
   render: ({ field, name, value, onChange }: any) => {
     return <IconPickerField label={field.label || name} value={value || ''} onChange={onChange} />

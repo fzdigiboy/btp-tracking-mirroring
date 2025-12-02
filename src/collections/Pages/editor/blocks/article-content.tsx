@@ -62,7 +62,7 @@ export const ArticleContent: React.FC<ArticleContentProps> = ({ blocks }) => {
           case 'quote':
             return (
               <blockquote key={index} className="border-l-4 border-blue-600 pl-6 py-4 my-8 italic text-xl text-gray-700 dark:text-gray-300">
-                "{block.content}"
+                &quot;{block.content}&quot;
               </blockquote>
             )
 

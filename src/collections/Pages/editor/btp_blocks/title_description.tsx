@@ -5,8 +5,8 @@ import { ColorPickerField } from '../components/CustomColorPicker'
 export interface TitleDescriptionProps {
   title: string
   description: string
-  textColor?: typeof ColorPickerField
-  backgroundColor?: typeof ColorPickerField
+  textColor?: string
+  backgroundColor?: string
   isFullWidth: string
 }
 

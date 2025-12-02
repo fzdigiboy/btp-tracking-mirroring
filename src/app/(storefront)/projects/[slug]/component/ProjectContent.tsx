@@ -46,7 +46,7 @@ export default function ProjectContent({
         {testimonies?.length > 0 &&
           testimonies?.map((testimony: any, index: number) => (
             <div key={index} className="bg-card border-l-4 border-primary p-6 rounded-lg shadow-sm">
-              <p className="text-text-muted italic">"{testimony.content}"</p>
+              <p className="text-text-muted italic">&quot;{testimony.content}&quot;</p>
               <p className="mt-4 font-bold text-foreground">
                 {testimony.name}, {testimony.country}
               </p>

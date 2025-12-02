@@ -37,7 +37,7 @@ export default function TestimonialCard({
                 ))}
             </div>
             <p className="text-text-muted text-sm font-normal leading-relaxed">
-                "{testimonial}"
+                &quot;{testimonial}&quot;
             </p>
         </div>
     );

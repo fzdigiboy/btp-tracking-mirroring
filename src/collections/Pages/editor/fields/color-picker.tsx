@@ -281,6 +281,7 @@ export const ColorPickerField = ({
 }
 
 export const colorPickerField: ExternalField<string> = {
+  // @ts-ignore
   type: 'custom',
   render: ({ name, value, onChange }: any) => {
     return (

@@ -138,6 +138,7 @@ export const LinkPickerField = ({ label, value, onChange }: LinkPickerFieldProps
 }
 
 export const linkPickerField: ExternalField<{ url: string; type: string; target?: string }> = {
+  // @ts-ignore
   type: 'custom',
   render: ({ field, name, value, onChange }: any) => {
     return (

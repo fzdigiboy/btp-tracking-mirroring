@@ -96,6 +96,7 @@ export const FontPickerField = ({ label, value, onChange }: FontPickerFieldProps
 }
 
 export const fontPickerField: ExternalField<string> = {
+  // @ts-ignore
   type: 'custom',
   render: ({ field, name, value, onChange }: any) => {
     return <FontPickerField label={field.label || name} value={value || ''} onChange={onChange} />

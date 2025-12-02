@@ -57,9 +57,9 @@ export const ProductGrid: ComponentConfig<ProductGridProps> = {
           {title && <h2 className="text-3xl font-bold text-center mb-12">{title}</h2>}
           <div className={`grid grid-cols-1 sm:grid-cols-2 ${columnClass} gap-6`}>
             {products && Array.isArray(products) ? (
-              products.map((product) => (
+              products.map((product: any, index: number) => (
                 // <ProductCard key={product.id} product={product} />
-                <div></div>
+                <div key={index}></div>
               ))
             ) : (
               <div className="col-span-full text-center py-8 text-muted-foreground">

@@ -6,7 +6,7 @@ export default function TestimonialsCTA() {
                     Inspired by these successes?
                 </h2>
                 <p className="mt-4 max-w-2xl mx-auto text-lg text-text-muted">
-                    You don't need to travel to build your dream project in Togo. Let's build yours, together.
+                    You don&apos;t need to travel to build your dream project in Togo. Let&apos;s build yours, together.
                 </p>
                 <div className="mt-8 flex justify-center">
                     <button className="flex items-center justify-center rounded-lg h-12 px-6 bg-primary text-white text-base font-bold hover:bg-opacity-90 transition-opacity">

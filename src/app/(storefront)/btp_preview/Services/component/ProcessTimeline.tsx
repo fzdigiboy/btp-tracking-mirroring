@@ -15,7 +15,7 @@ export default function ProcessTimeline() {
                     Your Journey From Idea to Delivery
                 </h2>
                 <p className="mt-4 text-lg">
-                    We've streamlined the entire process into a clear, manageable journey. Here's a high-level look at how we'll bring your project to life, together.
+                    We&apos;ve streamlined the entire process into a clear, manageable journey. Here&apos;s a high-level look at how we&apos;ll bring your project to life, together.
                 </p>
             </div>
             <div className="relative w-full">

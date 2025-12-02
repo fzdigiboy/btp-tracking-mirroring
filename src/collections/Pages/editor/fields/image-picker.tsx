@@ -4,6 +4,7 @@ import { ExternalField } from '@measured/puck'
 import { ImagePickerField } from '../components/ImagePickerField'
 
 export const imagePickerField: ExternalField<string> = {
+  // @ts-ignore
   type: 'custom',
   render: ({ field, name, value, onChange }: any) => {
     return (
