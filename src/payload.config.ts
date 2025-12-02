@@ -1,7 +1,7 @@
 // storage-adapter-import-placeholder
 import { sqliteAdapter } from '@payloadcms/db-sqlite' // database-adapter-import
-import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres'
-// import { postgresAdapter } from '@payloadcms/db-postgres'
+// import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres'
+import { postgresAdapter } from '@payloadcms/db-postgres'
 import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
@@ -43,7 +43,7 @@ export default buildConfig({
   },
   // database-adapter-config-start
   db: isProd
-    ? vercelPostgresAdapter({
+    ? postgresAdapter({
         pool: {
           connectionString: process.env.POSTGRES_URL,
         },
