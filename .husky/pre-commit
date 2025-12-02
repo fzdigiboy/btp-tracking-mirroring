@@ -10,3 +10,7 @@ echo "🏗️  Vérification du build..."
 pnpm run build
 
 pnpm exec tsc --noEmit
+
+git add src/migrations/*
+
+pnpm run migrate:auto
