@@ -1,5 +1,5 @@
-import type { Metadata } from 'next'
 import { seoConfig, type SEOPageKey } from '@/lib/seo-config'
+import type { Metadata } from 'next'
 
 interface BaseMetaProps {
   title?: string
@@ -112,7 +112,7 @@ export function generateProductMetadata({
   url,
 }: ProductMetaProps): Metadata {
   return generatePageMetadata({
-    pageKey: 'productDetail',
+    pageKey: 'projectDetail',
     title,
     description,
     image,

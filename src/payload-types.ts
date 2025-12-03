@@ -101,9 +101,13 @@ export interface Config {
   fallbackLocale: null;
   globals: {
     settings: Setting;
+    header: Header;
+    footer: Footer;
   };
   globalsSelect: {
     settings: SettingsSelect<false> | SettingsSelect<true>;
+    header: HeaderSelect<false> | HeaderSelect<true>;
+    footer: FooterSelect<false> | FooterSelect<true>;
   };
   locale: null;
   user: User & {
@@ -653,6 +657,72 @@ export interface Setting {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "header".
+ */
+export interface Header {
+  id: number;
+  logo?: {
+    text?: string | null;
+    image?: {
+      url?: (number | null) | Media;
+      alt?: string | null;
+    };
+  };
+  navLinks?:
+    | {
+        label: string;
+        linkType: 'internal' | 'external';
+        internalPage?: (number | null) | Page;
+        externalUrl?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  raqButton: {
+    text: string;
+    href?: string | null;
+    /**
+     * Couleur au format hexadécimal (ex: #003366)
+     */
+    color?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer".
+ */
+export interface Footer {
+  id: number;
+  logoText: string;
+  logo?: {
+    url?: (number | null) | Media;
+    alt?: string | null;
+  };
+  description?: string | null;
+  sections?:
+    | {
+        title: string;
+        links?:
+          | {
+              label: string;
+              href?: string | null;
+              /**
+               * Nom de l'icône Lucide (ex: MapPin, Phone, Mail, Facebook, Twitter)
+               */
+              icons?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  copyrightText?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "settings_select".
  */
 export interface SettingsSelect<T extends boolean = true> {
@@ -673,6 +743,74 @@ export interface SettingsSelect<T extends boolean = true> {
         url?: T;
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "header_select".
+ */
+export interface HeaderSelect<T extends boolean = true> {
+  logo?:
+    | T
+    | {
+        text?: T;
+        image?:
+          | T
+          | {
+              url?: T;
+              alt?: T;
+            };
+      };
+  navLinks?:
+    | T
+    | {
+        label?: T;
+        linkType?: T;
+        internalPage?: T;
+        externalUrl?: T;
+        id?: T;
+      };
+  raqButton?:
+    | T
+    | {
+        text?: T;
+        href?: T;
+        color?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer_select".
+ */
+export interface FooterSelect<T extends boolean = true> {
+  logoText?: T;
+  logo?:
+    | T
+    | {
+        url?: T;
+        alt?: T;
+      };
+  description?: T;
+  sections?:
+    | T
+    | {
+        title?: T;
+        links?:
+          | T
+          | {
+              label?: T;
+              href?: T;
+              icons?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  copyrightText?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

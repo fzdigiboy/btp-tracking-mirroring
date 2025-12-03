@@ -1,6 +1,13 @@
 import Link from "next/link";
+type FooterProps = {
+    logo: any;
+    logoText: string;
+    description: string;
+    copyrightText: string;
+    sections: any;
+}
 
-export default function Footer({ logo, logoText, description, copyrightText, sections }: any) {
+export default function Footer({ logo, logoText, description, copyrightText, sections }: FooterProps) {
     return (
         <footer className="bg-card border-t border-border mt-auto!">
             <div className="max-w-6xl mx-auto py-12 px-4">
@@ -9,7 +16,7 @@ export default function Footer({ logo, logoText, description, copyrightText, sec
                     <div className="col-span-1 md:col-span-2">
                         <div className="flex items-center gap-3 mb-4">
                             <div className="size-6 text-primary">
-                                {logo ? <img src={logo} alt={logo?.alt} className="w-6 h-6" />:
+                                {logo?.url ? <img src={logo?.url?.url} alt={logo?.alt} className="w-6 h-6" /> :
                                 <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         clipRule="evenodd"

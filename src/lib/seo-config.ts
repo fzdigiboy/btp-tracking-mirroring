@@ -20,65 +20,78 @@ type PageConfigWithDescriptionTemplate = PageConfigBase & {
 }
 
 export const seoConfig = {
-  defaultTitle: 'ShopNex - Modern E-Commerce Storefront',
-  defaultDescription: 'A minimal, modern e-commerce storefront built with Next.js',
-  siteName: 'ShopNex',
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://shopnex.com',
+  defaultTitle: 'BTPTracking - Construction & Architecture Professionnelle',
+  defaultDescription: 'Entreprise BTP spécialisée dans la construction de bâtiments, achat et vente de terrains, architecture, design et étude de sol.',
+  siteName: 'BTPTracking',
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://BTPTracking.tg',
   defaultImage: '/og-image.jpg',
-  twitterHandle: '@shopnex',
-  locale: 'en_US',
-  brand: 'ShopNex',
+  twitterHandle: '@BTPTracking',
+  locale: 'fr_FR',
+  brand: 'BTPTracking',
 
   pages: {
     home: {
       titleTemplate: '%s',
-      description: 'Discover premium products at ShopNex. Shop the latest trends with fast shipping and excellent customer service.',
+      description: 'Votre partenaire de confiance pour la construction de bâtiments, achat de terrains, architecture et design. Expertise complète en BTP et étude de sol au Togo.',
     } as PageConfigWithTemplate,
     
-    products: {
-      titleTemplate: '%s | ShopNex',
-      description: 'Discover our complete collection of premium products. Shop the latest trends and find exactly what you need.',
-    } as PageConfigWithTemplate,
+    about: {
+      title: 'À Propos | BTPTracking',
+      description: 'Découvrez BTPTracking, entreprise BTP spécialisée dans la construction, l\'architecture et l\'achat de terrains. Notre expertise et notre engagement pour vos projets.',
+    } as PageConfigWithTitle,
     
-    productDetail: {
-      titleTemplate: '%s | ShopNex',
-      descriptionTemplate: 'Shop %s at ShopNex. %s',
+    contact: {
+      title: 'Contact | BTPTracking',
+      description: 'Contactez-nous pour vos projets de construction, achat de terrain ou étude de sol. Notre équipe d\'experts est à votre écoute.',
+      noIndex: false,
+    } as PageConfigWithTitle,
+    
+    projects: {
+      title: 'Nos Projets | BTPTracking',
+      description: 'Découvrez nos réalisations en construction de bâtiments, architecture et aménagement. Portfolio de projets résidentiels et commerciaux.',
+    } as PageConfigWithTitle,
+    
+    projectDetail: {
+      titleTemplate: '%s | Projets BTPTracking',
+      descriptionTemplate: 'Découvrez le projet %s réalisé par BTPTracking. %s',
     } as PageConfigWithDescriptionTemplate,
     
-    search: {
-      titleTemplate: 'Search Results for "%s" | ShopNex',
-      descriptionTemplate: 'Shop products matching "%s" at ShopNex. Find exactly what you\'re looking for in our curated collection.',
+    testimonials: {
+      title: 'Témoignages Clients | BTPTracking',
+      description: 'Découvrez les avis de nos clients satisfaits sur nos services de construction, architecture et vente de terrains.',
+    } as PageConfigWithTitle,
+    
+    services: {
+      title: 'Nos Services | BTPTracking',
+      description: 'Construction de bâtiments, achat et vente de terrains, architecture, design d\'intérieur et étude de sol. Services BTP complets.',
+    } as PageConfigWithTitle,
+    
+    terrains: {
+      title: 'Terrains à Vendre | BTPTracking',
+      description: 'Parcelles et terrains à vendre au Togo. Trouvez le terrain idéal pour votre projet de construction avec accompagnement complet.',
+    } as PageConfigWithTitle,
+    
+    terrainDetail: {
+      titleTemplate: '%s | Terrains BTPTracking',
+      descriptionTemplate: 'Terrain à vendre : %s. %s',
     } as PageConfigWithDescriptionTemplate,
     
-    categories: {
-      title: 'Categories | ShopNex',
-      description: 'Browse our product categories. Find exactly what you need by shopping our organized collections.',
+    architecture: {
+      title: 'Architecture & Design | BTPTracking',
+      description: 'Services d\'architecture et de design pour vos projets de construction. Plans, conception 3D et accompagnement personnalisé.',
     } as PageConfigWithTitle,
     
-    cart: {
-      title: 'Shopping Cart | ShopNex',
-      description: 'Review your selected items and proceed to checkout. Secure shopping cart with easy item management.',
-      noIndex: true,
-    } as PageConfigWithTitle,
-    
-    checkout: {
-      title: 'Checkout | ShopNex',
-      description: 'Complete your purchase securely. Enter shipping and payment information to finalize your order.',
-      noIndex: true,
-    } as PageConfigWithTitle,
-    
-    orderConfirmation: {
-      title: 'Order Confirmation | ShopNex',
-      description: 'Thank you for your order! Your purchase has been confirmed and is being processed.',
-      noIndex: true,
+    etudeSol: {
+      title: 'Étude de Sol | BTPTracking',
+      description: 'Étude géotechnique et analyse de sol professionnelle pour sécuriser vos projets de construction.',
     } as PageConfigWithTitle,
   },
 
   // Open Graph defaults
   openGraph: {
     type: 'website',
-    locale: 'en_US',
-    siteName: 'ShopNex',
+    locale: 'fr_FR',
+    siteName: 'BTPTracking',
   },
 
   // Twitter defaults
