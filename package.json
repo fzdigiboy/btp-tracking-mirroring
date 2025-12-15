@@ -13,7 +13,7 @@
     "generate:types": "payload generate:types",
     "generate:schema": "payload generate:db-schema",
     "migrate:create": "cross-env NODE_OPTIONS=--no-deprecation payload migrate:create",
-    "migrate:auto": "echo 'N' | cross-env NODE_OPTIONS=--no-deprecation payload migrate:create",
+    "migrate:auto": "echo 'N' | cross-env NODE_OPTIONS=--no-deprecation NODE_ENV=production payload migrate:create",
     "migrate:prod": "cross-env NODE_ENV=production payload migrate",
     "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
     "lint:quiet": "cross-env NODE_OPTIONS=--no-deprecation next lint --quiet",
