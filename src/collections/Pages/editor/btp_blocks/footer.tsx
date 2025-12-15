@@ -94,9 +94,9 @@ export const FooterBlocks: ComponentConfig<FooterProps> = {
       <Footer
         logoText={logoText}
         logo={logo}
-        description={description}
+        description={description || ''}
         sections={sections}
-        copyrightText={copyrightText}
+        copyrightText={copyrightText || ''}
       />
     )
   },

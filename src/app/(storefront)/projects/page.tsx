@@ -1,8 +1,6 @@
 'use client'
 import { getProjects } from '@/lib/server-actions/actions'
 import { useCallback, useEffect, useState } from 'react'
-import Footer from '../btp_preview/common_component/footer'
-import Header from '../btp_preview/common_component/header'
 import FiltersSidebar, { ProjectsFilters } from './component/FiltersSidebar'
 import Pagination from './component/Pagination'
 import ProjectCard from './component/ProjectCard'
@@ -132,7 +130,6 @@ export default function Projects() {
   return (
     <div className="relative flex h-auto min-h-screen w-full flex-col">
       <div className="layout-container flex h-full grow flex-col">
-        <Header />
         <main className="flex-1 p-4 sm:p-6 lg:p-8 px-4 md:px-8 lg:px-14">
           <ProjectsHeader />
           <div className="flex flex-col gap-8 lg:flex-row">
@@ -162,7 +159,6 @@ export default function Projects() {
             </div>
           </div>
         </main>
-        <Footer />
       </div>
     </div>
   )
