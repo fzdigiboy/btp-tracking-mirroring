@@ -3,8 +3,6 @@
 // import Footer from '../btp_preview/common_component/footer'
 // import Header from '../btp_preview/common_component/header'
 import { getPayloadClient } from '@/lib/payload'
-import Footer from '../../btp_preview/common_component/footer'
-import Header from '../../btp_preview/common_component/header'
 // import ImageGallery from './component/ImageGallery'
 import ProjectContent from './component/ProjectContent'
 import ProjectHeader from './component/ProjectHeader'
@@ -47,7 +45,6 @@ export default async function ProjectDetails({ params }: any) {
   return (
     <div className="relative flex h-auto min-h-screen w-full flex-col">
       <div className="layout-container flex h-full grow flex-col">
-        <Header />
         <main className="flex-1 p-4 sm:p-6 lg:p-8 px-4 md:px-8 lg:px-14">
           <ProjectHeader title={project.docs[0].title} location={project.docs[0].location} />
           {/* <ImageGallery images={normalizedImages} /> */}
@@ -65,7 +62,6 @@ export default async function ProjectDetails({ params }: any) {
             />
           </div>
         </main>
-        <Footer />
       </div>
     </div>
   )

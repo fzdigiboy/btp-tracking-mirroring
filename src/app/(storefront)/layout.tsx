@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import type React from 'react'
+export const dynamic = 'force-dynamic'
+
 // import { GeistSans } from "geist/font/sans"
 // import { GeistMono } from "geist/font/mono"
 // import { Analytics } from "@vercel/analytics/next"
@@ -14,41 +16,43 @@ export async function generateMetadata(): Promise<Metadata> {
     generator: 'digitaleurs',
   }
 }
-
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
-
-    const HeaderData = await getHeader();
-    const FooterData = await getFooter();
-    
+  const HeaderData = await getHeader();
+  const FooterData = await getFooter();
+  
   return (
     <html lang="fr">
       <head></head>
       <body>
         <AuthProvider>
-  <main id="main-content" className="flex flex-col min-h-screen">
-    <Header 
-      logo={HeaderData?.logo} 
-      navLinks={HeaderData?.navLinks} 
-      raqButton={HeaderData?.raqButton} 
-    />
-    
-    <div className="flex-1">
-      <Suspense fallback={null}>{children}</Suspense>
-    </div>
+          <main id="main-content" className="flex flex-col min-h-screen">
+            {HeaderData && (
+              <Header 
+                logo={HeaderData?.logo} 
+                navLinks={HeaderData?.navLinks} 
+                raqButton={HeaderData?.raqButton} 
+              />
+            )}
+            
+            <div className="flex-1">
+              <Suspense fallback={null}>{children}</Suspense>
+            </div>
 
-    <Footer 
-      copyrightText={FooterData?.copyrightText || ""} 
-      description={FooterData?.description || ""} 
-      logoText={FooterData?.logoText || ""} 
-      sections={FooterData?.sections || []} 
-      logo={FooterData?.logo} 
-    />
-  </main>
-</AuthProvider>
+            {FooterData && (
+              <Footer 
+                copyrightText={FooterData?.copyrightText || ""} 
+                description={FooterData?.description || ""} 
+                logoText={FooterData?.logoText || ""} 
+                sections={FooterData?.sections || []} 
+                logo={FooterData?.logo} 
+              />
+            )}
+          </main>
+        </AuthProvider>
       </body>
     </html>
   )
