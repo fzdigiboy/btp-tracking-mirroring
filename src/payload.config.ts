@@ -1,5 +1,5 @@
 // storage-adapter-import-placeholder
-import { sqliteAdapter } from '@payloadcms/db-sqlite'; // database-adapter-import
+import { sqliteAdapter } from '@payloadcms/db-sqlite';
 import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres'
 // import { postgresAdapter } from '@payloadcms/db-postgres';
 import path from 'path';
