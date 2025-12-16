@@ -1,6 +1,6 @@
 // storage-adapter-import-placeholder
 import { sqliteAdapter } from '@payloadcms/db-sqlite';
-import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres'
+import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres';
 // import { postgresAdapter } from '@payloadcms/db-postgres';
 import path from 'path';
 import { buildConfig } from 'payload';
@@ -11,6 +11,7 @@ import { Media } from './collections/Media';
 import { Pages } from './collections/Pages/Pages';
 import { Users } from './collections/Users';
 
+import { uploadthingStorage } from '@payloadcms/storage-uploadthing';
 import { Contacts } from './collections/Contacts';
 import { ProjectTypes } from './collections/Project_Type';
 import { Projects } from './collections/Projects';
@@ -61,5 +62,26 @@ export default buildConfig({
   plugins: [
     ...plugins,
     // storage-adapter-placeholder
+    uploadthingStorage({
+      collections:{
+        media:true,
+      },
+      options: {
+        token: process.env.UPLOADTHING_TOKEN || '',
+        // acl: 'public-read',
+      },
+      // apiKey: process.env.UPLOADTHING_TOKEN,
+      // baseUrl: 'https://uploadthing.com/api/v1',
+      // bucket: 'btp-tracking',
+      // folder: 'images',
+      // mediaCollection: Media,
+      // uploadOptions: {
+      //   uploadType: 'multipart',
+      //   multipartOptions: {
+      //     contentType: 'image/jpeg',
+      //     filename: ({ originalname }) => originalname,
+      //   },
+      // },
+    }),
   ],
 })
