@@ -673,9 +673,10 @@ export interface Header {
   navLinks?:
     | {
         label: string;
-        linkType: 'internal' | 'external';
+        linkType: 'internal' | 'external' | 'custom';
         internalPage?: (number | null) | Page;
         externalUrl?: string | null;
+        customUrl?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -709,6 +710,7 @@ export interface Footer {
           | {
               label: string;
               href?: string | null;
+              linkType?: ('internal' | 'external') | null;
               /**
                * Nom de l'icône Lucide (ex: MapPin, Phone, Mail, Facebook, Twitter)
                */
@@ -772,6 +774,7 @@ export interface HeaderSelect<T extends boolean = true> {
         linkType?: T;
         internalPage?: T;
         externalUrl?: T;
+        customUrl?: T;
         id?: T;
       };
   raqButton?:
@@ -807,6 +810,7 @@ export interface FooterSelect<T extends boolean = true> {
           | {
               label?: T;
               href?: T;
+              linkType?: T;
               icons?: T;
               id?: T;
             };

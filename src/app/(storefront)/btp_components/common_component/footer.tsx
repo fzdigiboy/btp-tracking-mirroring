@@ -1,4 +1,7 @@
+"use client"
+
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 type FooterProps = {
     logo: any;
     logoText: string;
@@ -8,6 +11,7 @@ type FooterProps = {
 }
 
 export default function Footer({ logo, logoText, description, copyrightText, sections }: FooterProps) {
+    const router = useRouter();
     return (
         <footer className="bg-card border-t border-border mt-auto!">
             <div className="max-w-6xl mx-auto py-12 px-4">
@@ -39,17 +43,25 @@ export default function Footer({ logo, logoText, description, copyrightText, sec
                             <h3 className="font-bold text-foreground mb-4">{section.title}</h3>
                             <ul className="space-y-2 text-text-muted">
                                 {section?.links?.map((link: any, linkIndex: number) => {
-                                  return (  <li key={linkIndex}>
+                                  return (  link?.linkType === 'external' ? (
                                         <Link
+                                        key={linkIndex}
                                             href={link?.href ?? "#"}
                                             className="text-text-muted hover:text-primary transition-colors flex items-start gap-2"
                                         >
                                              {link?.icons}                                           {link.label}
                                         </Link>
-                                    </li>
-                                   )
-                                    }
-                                )}
+                                    ) : (
+                                            <div
+                                                key={linkIndex}
+                                                className="cursor-pointer text-sm font-medium text-foreground hover:text-primary transition-colors"
+                                                onClick={() => router.push(link?.href ?? "#")}
+                                                >
+                                                {link?.label}
+                                            </div>
+                                        )
+                                    )})
+                                })
                             </ul>
                         </div>
                     ))}
