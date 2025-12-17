@@ -2,9 +2,11 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
 export default function Header({ logo, navLinks, raqButton }: any) {
+  const router = useRouter()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const url = typeof logo?.image === 'string' ? logo?.image : logo?.image?.url
   return (
@@ -40,21 +42,31 @@ export default function Header({ logo, navLinks, raqButton }: any) {
         {/* Desktop Navigation */}
         <div className="hidden md:flex flex-1 justify-end items-center gap-8">
           <nav className="flex items-center gap-6">
+            {/* <pre>{JSON.stringify(navLinks, null, 2)}</pre> */}
             {navLinks?.map((link: any, index: number) => {
-              const href = link?.internalPage?.slug
-                ? `/${link.internalPage.slug}`
-                : link?.externalUrl?.startsWith('http')
-                  ? link.externalUrl
-                  : `https://${link.externalUrl}`
-              return (
-                <Link
+              const href = link?.internalPage?.handle
+                ? `/${link?.internalPage?.handle}`
+                : `/${link?.customUrl}`
+                  
+                const isExternal = link?.linkType === 'external'
+            return (isExternal ? (
+              <Link
                   key={index}
                   className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-                  href={href}
+                  href={link?.externalUrl}
                 >
                   {link?.label}
                 </Link>
-              )
+            ) : (
+              <div
+                  key={index}
+                  className="cursor-pointer text-sm font-medium text-foreground hover:text-primary transition-colors"
+                  onClick={() => router.push(href)}
+                >
+                  {link?.label}
+                </div>
+            ))
+                
             })}
           </nav>
           {/* TODO: Mettre un lien ici vers la page de contact */}

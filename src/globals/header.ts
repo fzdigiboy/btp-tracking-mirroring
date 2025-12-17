@@ -67,6 +67,10 @@ export const Header: GlobalConfig = {
               label: 'External',
               value: 'external',
             },
+            {
+              label: 'Custom',
+              value: 'custom',
+            },
           ],
         },
         {
@@ -84,6 +88,14 @@ export const Header: GlobalConfig = {
           label: 'External URL',
           admin: {
             condition: (data, siblingData) => siblingData?.linkType === 'external',
+          },
+        },
+        {
+          name: 'customUrl',
+          type: 'text',
+          label: 'Custom URL',
+          admin: {
+            condition: (data, siblingData) => siblingData?.linkType === 'custom',
           },
         },
       ],

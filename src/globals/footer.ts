@@ -71,6 +71,16 @@ export const Footer: GlobalConfig = {
               label: 'Link URL',
             },
             {
+              name: 'linkType',
+              type: "select",
+              label: 'Link Type',
+              options: [
+                { label: 'Internal', value: 'internal' },
+                { label: 'External', value: 'external' },
+              ],
+              defaultValue: 'external',
+            },
+            {
               name: 'icons',
               type: 'text',
               label: 'Icon Name',
