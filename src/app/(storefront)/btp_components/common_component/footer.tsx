@@ -61,7 +61,7 @@ export default function Footer({ logo, logoText, description, copyrightText, sec
                                             </div>
                                         )
                                     )})
-                                })
+                                }
                             </ul>
                         </div>
                     ))}
