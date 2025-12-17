@@ -13,7 +13,7 @@ export default function ContactCTA(
 ) {
     return (
         <section className={`py-16 sm:py-24 ${isFullWidth === 'Yes' ? '' : 'max-w-6xl mx-auto'}`} style={{ backgroundColor: sectionBgColor }}>
-            <div className="max-w-4xl mx-auto px-4">
+            <div className="max-w-4xl mx-auto px-4 py-8" style={{ backgroundColor: backgroundColor , borderRadius: '10px' }}>
                 <div className="text-center">
                     <h2 className="text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: titleColor }}>
                         {title}
