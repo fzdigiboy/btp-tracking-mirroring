@@ -70,9 +70,9 @@ export default function Header({ logo, navLinks, raqButton }: any) {
             })}
           </nav>
           {/* TODO: Mettre un lien ici vers la page de contact */}
-          <button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-6 bg-primary text-white text-sm font-bold tracking-wide hover:bg-opacity-90 transition-colors">
+          {/* <button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-6 bg-primary text-white text-sm font-bold tracking-wide hover:bg-opacity-90 transition-colors">
             <span className="truncate">{raqButton?.text || 'Request a Quote'}</span>
-          </button>
+          </button> */}
         </div>
 
         {/* Mobile Menu Button */}
