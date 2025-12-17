@@ -1,17 +1,24 @@
 // import { RichText } from "@/collections/Pages/editor/components/RichText";
 // import { Render } from "@measured/puck";
 // import { RichText, RichTextProps } from "@/collections/Pages/editor/components/RichText";
+// import { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical'
 import { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical'
 
+
 import { RichText } from '@payloadcms/richtext-lexical/react'
+
+interface ProjectContentProps {
+  content: SerializedEditorState | null | undefined
+  testimonies: any[]
+}
+
+
 
 export default function ProjectContent({
   content,
   testimonies,
-}: {
-  content: SerializedEditorState
-  testimonies: any
-}) {
+}: ProjectContentProps) {
+  if (!content) return null
   return (
     <div className="lg:col-span-2">
       <h2 className="text-3xl font-bold mb-4">About the Project</h2>

@@ -9,10 +9,27 @@ export default function TestimonialsGallery({ title, isFullWidth }: any) {
   const [testimonies, setTestimonies] = useState([]);
   const [activeFilter, setActiveFilter] = useState("All Projects");
 
+  // useEffect(() => {
+  //   fetch(`/api/testimonies/all?projectType=${activeFilter}`)
+  //     .then(res => res.json())
+  //     .then(data => setTestimonies(data));
+  // }, [activeFilter]);
+
   useEffect(() => {
-    fetch(`/api/testimonies/all?projectType=${activeFilter}`)
-      .then(res => res.json())
-      .then(data => setTestimonies(data));
+    const loadTestimonies = async () => {
+      let url = "/api/testimonies/all";
+
+      // 👉 Si ce n'est PAS "All Projects", on filtre
+      if (activeFilter !== "All Projects") {
+        url += `?projectType=${encodeURIComponent(activeFilter)}`;
+      }
+
+      const res = await fetch(url, { cache: "no-store" });
+      const data = await res.json();
+      setTestimonies(data);
+    };
+
+    loadTestimonies();
   }, [activeFilter]);
   
   return (
@@ -21,6 +38,12 @@ export default function TestimonialsGallery({ title, isFullWidth }: any) {
       <div className="flex justify-center mb-8">
         <FilterChips activeFilter={activeFilter} setActiveFilter={setActiveFilter} />
       </div>
+
+      {testimonies.length === 0 && (
+        <p className="text-center text-gray-400">
+          Aucun témoignage disponible pour ce type de projet.
+        </p>
+      )}
 
       <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {testimonies?.map((t: any, index: number) => (

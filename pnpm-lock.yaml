@@ -278,6 +278,9 @@ importers:
       recharts:
         specifier: ^2.15.1
         version: 2.15.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      serializer:
+        specifier: link:@payloadcms/richtext-lexical/serializer
+        version: link:@payloadcms/richtext-lexical/serializer
       sharp:
         specifier: 0.34.2
         version: 0.34.2

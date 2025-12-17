@@ -21,6 +21,7 @@ import { Footer } from './globals/footer';
 import { Header } from './globals/header';
 import { Settings } from './globals/Settings';
 import { plugins } from './plugins';
+import { lexicalEditor } from '@payloadcms/richtext-lexical'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -84,4 +85,5 @@ export default buildConfig({
       // },
     }),
   ],
+  editor: lexicalEditor({}),
 })
