@@ -202,7 +202,7 @@ export default function MediaGallery({ mediaUrls , emptyFile, error, isFullWidth
   const isSingleMedia = mediaUrls.length === 1;
 
   return (
-    <div className={`mb-12 py-2 sm:py-8 ${(isFullWidth ?? 'Yes')==='No'?'custom_container':''}`}>
+    <div className={`mb-12 py-2 sm:py-8 ${(isFullWidth ?? 'Yes')==='No'?'custom_container':'px-4 md:px-8'}`}>
       <div className="grid grid-cols-12 gap-4 h-auto md:h-[600px]">
         {/* Conteneur principal */}
         <div className={`${isSingleMedia ? 'col-span-12' : 'col-span-12 md:col-span-8'} h-full overflow-hidden rounded-xl relative`}>
